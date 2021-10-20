@@ -1,0 +1,1124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/Scripts/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+
+    <style>
+        .espacio {
+            margin-top: 2.5%;
+        }
+        
+        .fa-warning{ color:red;}
+        
+        .fa-check{color:#20c997}
+        
+        span {
+            position: relative;
+        }
+
+        i {
+            padding-right: 5px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        .obligado {
+            color: red;
+        }
+
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+
+        ._hideNav {
+            display: none;
+        }
+
+        ._modales-sm {
+            display: none;
+        }
+
+        ._modales-lg {
+            display: none;
+        }
+
+        #jqxResponsivePanel,
+        #content {
+            float: left;
+        }
+
+        .jqx-rc-all {
+            border-radius: 0px;
+        }
+
+        .jqx-tabs-content {
+            height: 100% !important;
+            max-height: 100% !important;
+            min-height: 100% !important;
+        }
+
+        #map {
+            height: 350px;
+            width:95%;
+        }
+
+        .btn-link {
+            font-weight: 400;
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+        color: black;
+        text-decoration: none;
+        background-color: transparent;
+        border-color: transparent;
+        }
+
+        .btn-link.focus, .btn-link:focus {
+            text-decoration: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        /*background-color: rgba(224, 233, 245, 0.4);
+        border: 1px solid rgba(224,233,245,1);*/
+        }
+    </style>
+</head>
+
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido" style="display:none">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left"></span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuMovimientosPersonal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border: none;height:91%" class="fluentContenedorInterno2">
+            <div class="splitter-panel" style="border: none">
+                <div id="jqxtabs" style="margin:1px;">
+                    <ul>
+                        <li>Datos personales</li>
+                        <li id="TabLaborales">Datos laborales</li>
+                    </ul>
+                    <!-- Tab datos personales -->
+                    <div>
+                        <div class="section" style="margin:1%;">
+                            <div class="accordion" id="accordionTabsNuevo">
+                                <!-- Datos generales -->
+                                <div class="card">
+                                    <div class="card-header" id="headingGral">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseGral" aria-expanded="true" aria-controls="collapseGral">
+                                            <h5 style="color:#138496;font-weight:600;">Generales</h5>
+                                        </button>
+                                    </h2>
+                                    </div>
+                                
+                                    <div id="collapseGral" class="collapse show" aria-labelledby="headingGral" data-parent="#accordionTabsNuevo">
+                                        <div id="divDatosGenerales" class="section" style="margin: 1%;">
+                                            <div class="container">
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-3">
+                                                        <label for="noempleado">No. empleado</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                disabled="disabled"
+                                                                id="noempleado"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="noantecedente">No. antecedente</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto aweb0"
+                                                                id="noantecedente"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="apellidopaterno">Apellido paterno</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto aweb0"
+                                                                id="apellidopaterno"
+                                                                maxlength="25" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="apellidomaterno">Apellido materno</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="apellidomaterno"
+                                                                maxlength="25" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-6">
+                                                        <span class="obligado">* </span>
+                                                        <label for="nombre">Nombre</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto aweb0"
+                                                                id="nombre"
+                                                                maxlength="30" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="fechanacimiento">Fecha de nacimiento</label>
+                                                        <div id="fechanacimiento"
+                                                                class="hwdbo-calendario aweb0"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="sexo">G&eacute;nero:</label>
+                                                        <div id="sexo" class="hwdbo-combo aweb0"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-3">
+                                                        <label for="lugarnacimiento">Lugar de nacimiento</label>
+                                                        <div id="lugarnacimiento"
+                                                                class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="estadocivil">Estado civil</label>
+                                                        <div id="estadocivil" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-3 mex">
+                                                        <span class="obligado">* </span>
+                                                        <label for="rfc">RFC</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto "
+                                                                id="rfc"
+                                                                maxlength="13" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="curp" id="lblcurp">CURP</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto aweb0"
+                                                                id="curp"
+                                                                maxlength="18" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="nss">NSS</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto aweb0"
+                                                                id="nss"
+                                                                maxlength="11"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="email">E-mail personal</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto aweb0"
+                                                                id="email"
+                                                                maxlength="40"
+                                                                style="text-transform: none;" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="tiporegimen">Tipo de r&eacute;gimen</label>
+                                                        <div id="tiporegimen" class="hwdbo-combo aweb0"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span class="obligado">* </span>
+                                                        <label for="formapago">Forma de pago</label>
+                                                        <div id="formapago" class="hwdbo-combo aweb0"></div>
+                                                    </div>
+                                                </div>
+                                                <div id="divDatosBancarios"
+                                                        class="form-row espacio"
+                                                        style="margin-bottom: 1%">
+                                                    <div class="col-md-4">
+                                                        <span class="obligado">* </span>
+                                                        <label for="banco">Banco</label>
+                                                        <div id="banco" class="hwdbo-combo aweb0"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span class="obligado" id="spanCuentaBancaria">
+                                                            *
+                                                        </span>
+                                                        <label for="ctabancaria">Cuenta bancaria</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto aweb0"
+                                                                id="ctabancaria"
+                                                                maxlength="15"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>CLABE</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="clabe"
+                                                                maxlength="18"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                                <div class="form-row"
+                                                        style="margin-top: 1% !important">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button"
+                                                                style="margin:1%;display:none"
+                                                                id="btnSiguiente"
+                                                                class="hwdbo-boton"
+                                                                data-contenido="divDatosGenerales"
+                                                                onclick="validaCampos(this);"
+                                                                title="Siguiente">
+                                                            <span>
+                                                                Siguiente
+                                                                <i class="fa fa-arrow-right"
+                                                                    aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" 
+                                                        class="hwdbo-boton" 
+                                                        data-contenido="divDatosGenerales"
+                                                        onclick="TabLaborales(this);"><i class="fa fa-folder"></i> Datos laborales</button>
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Datos de contacto-->
+                                <div class="card">
+                                    <div class="card-header" id="headingContacto">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
+                                                <h5 style="color:#cf6427;font-weight:600;">Contacto</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseContacto" class="collapse" aria-labelledby="headingContacto" data-parent="#accordionTabsNuevo">
+                                        <div id="divDatosContacto" style="margin: 1%;">
+                                            <div class="container">
+                                                <p><b>Personales</b></p>
+                                                <hr>
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-2">
+                                                        <label for="tipotelefono1">Tipo de teléfono</label>
+                                                        <div id="tipotelefono1" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="ladatelefono1">Clave del país</label>
+                                                        <div id="ladatelefono1" class="hwdbo-combo lada"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="telefono1">Teléfono 1</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="telefono1"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="tipotelefono2">Tipo de teléfono</label>
+                                                        <div id="tipotelefono2" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="ladatelefono2">Clave del país</label>
+                                                        <div id="ladatelefono2" class="hwdbo-combo lada"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="telefono2">Teléfono 2</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="telefono2"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <p><b>En caso de emergencia</b></p>
+                                                <hr>
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-2">
+                                                        <label for="parentesco1">Parentesco</label>
+                                                        <div id="parentesco1" class="hwdbo-combo "></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="nombreparentesco1">Nombre</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="nombreparentesco1"
+                                                                maxlength="50" />
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="tipotelefono3">Tipo de teléfono</label>
+                                                        <div id="tipotelefono3"
+                                                                class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="ladatelefono3">Clave del país</label>
+                                                        <div id="ladatelefono3" class="hwdbo-combo lada"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="telefono3">Teléfono</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="telefono3"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-2">
+                                                        <label for="parentesco2">Parentesco</label>
+                                                        <div id="parentesco2" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="nombreparentesco2">Nombre</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="nombreparentesco2"
+                                                                maxlength="50" />
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="tipotelefono4">Tipo de teléfono</label>
+                                                        <div id="tipotelefono4"
+                                                                class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="ladatelefono4">Clave del país</label>
+                                                        <div id="ladatelefono4" class="hwdbo-combo lada"></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="telefono4">Teléfono</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm  hwdbo-texto"
+                                                                id="telefono4"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                </div>
+
+                                                <!--Div Botones del Tab -->
+                                                <div class="form-row" style="margin-top:2%;">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button"
+                                                                style="margin:1%;display:none"
+                                                                class="hwdbo-boton"
+                                                                data-contenido="divDatosContacto"
+                                                                onclick="validaCampos(this);"
+                                                                title="Siguiente">
+                                                            <span>
+                                                                Siguiente
+                                                                <i class="fa fa-arrow-right"
+                                                                    aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" 
+                                                        class="hwdbo-boton" 
+                                                        data-contenido="divDatosContacto"
+                                                        onclick="TabLaborales(this);"><i class="fa fa-folder"></i> Datos laborales</button>
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Datos de domicilio-->
+                                <div class="card">
+                                    <div class="card-header" id="headingDomicilio">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseDomicilio" aria-expanded="true" aria-controls="collapseDomicilio">
+                                                <h5 style="color:#46aa8c;font-weight:600;">Domicilio</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseDomicilio" class="collapse" aria-labelledby="headingDomicilio" data-parent="#accordionTabsNuevo">
+                                        <div id="divDatosDomicilio" style="margin: 1%;">
+                                            <div class="container">
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="pais">País</label>
+                                                        <div id="pais" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="cp">Código postal</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="cp"
+                                                                maxlength="10"
+                                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="entidadfederativa">Entidad federativa</label>
+                                                        <div id="entidadfederativa" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="municipio">Municipio</label>
+                                                        <div id="municipio" class="hwdbo-combo"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="colonia">Colonia</label>
+                                                        <div id="colonia" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="calle">Calle</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="calle"
+                                                                maxlength="100" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <!--<span class="obligado">* </span>-->
+                                                        <label for="noexterior">No. Exterior</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="noexterior"
+                                                                maxlength="10"
+                                                                />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>No. Interior</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="nointerior"
+                                                                maxlength="10"
+                                                                />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <!--<div class="col-md-6 text-center">
+                                                        <div id="map"></div>-->
+                                                        <!--<div class="mapouter">
+                                                        <div class="gmap_canvas">
+                                                        <iframe width="500"
+                                                                height="350"
+                                                                id="gmap_canvas"
+                                                                src="https://maps.google.com/maps?q=Calle%20Pte.%20140%20839,%20Industrial%20Vallejo,%20Azcapotzalco,%2002300%20Ciudad%20de%20M%C3%A9xico,%20CDMX&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                                                                frameborder="0"
+                                                                scrolling="no"
+                                                                marginheight="0"
+                                                                marginwidth="0"></iframe>
+                                                        </div>
+                                                        </div>-->
+                                                    <!--</div>-->
+                                                    <div class="col-md-3">
+                                                        <label for="latitud">Latitud</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="latitud"
+                                                                maxlength="100" />
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>Longitud</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="longitud"
+                                                                maxlength="100" />
+                                                    </div>
+                                                </div>
+
+                                                <!--Div Botones del Tab -->
+                                                <div class="form-row" style="margin-top:2%">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button"
+                                                                style="margin:1%;display:none"
+                                                                id="btnSiguiente"
+                                                                class="hwdbo-boton"
+                                                                data-contenido="divDatosDomicilio"
+                                                                onclick="validaCampos(this);"
+                                                                title="Siguiente">
+                                                            <span>
+                                                                Siguiente
+                                                                <i class="fa fa-arrow-right"
+                                                                    aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" 
+                                                        class="hwdbo-boton"
+                                                        data-contenido="divDatosDomicilio" 
+                                                        onclick="TabLaborales(this);"><i class="fa fa-folder"></i> Datos laborales</button>
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Datos de academicos-->
+                                <div class="card">
+                                    <div class="card-header" id="headingAcademicos">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseAcademicos" aria-expanded="true" aria-controls="collapseAcademicos">
+                                                <h5 style="color:#6C3483;font-weight:600;">Acad&eacute;micos</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseAcademicos" class="collapse" aria-labelledby="headingAcademicos" data-parent="#accordionTabsNuevo">
+                                        <div id="divDatosAcademicos" style="margin: 1%;">
+                                            <div class="container">
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-4">
+                                                        <label>Grado de estudios</label>
+                                                        <div id="gradoestudios" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Especialidad</label>
+                                                        <div id="especialidad" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>#Certificado/Cédula</label>
+                                                        <input type="text"
+                                                                class="form-control form-control-sm hwdbo-texto"
+                                                                id="cedulaprofesional"
+                                                                maxlength="20" />
+                                                    </div>
+                                                </div>
+
+                                                <!--Div Botones del Tab -->
+                                                <div class="form-row" style="margin-top:2%">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button"
+                                                                style="margin:1%;display:none"
+                                                                class="hwdbo-boton"
+                                                                data-contenido="divDatosAcademicos"
+                                                                onclick="validaCampos(this);"
+                                                                title="Siguiente">
+                                                            <span>
+                                                                Siguiente
+                                                                <i class="fa fa-arrow-right"
+                                                                    aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" 
+                                                        class="hwdbo-boton" 
+                                                        data-contenido="divDatosAcademicos"
+                                                        onclick="TabLaborales(this);"><i class="fa fa-folder"></i> Datos laborales</button>
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Datos de salud-->
+                                <div class="card">
+                                    <div class="card-header" id="headingSalud">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSalud" aria-expanded="true" aria-controls="collapseSalud">
+                                                <h5 style="color:#D4AC0D;font-weight:600;">Salud</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseSalud" class="collapse" aria-labelledby="headingSalud" data-parent="#accordionTabsNuevo">
+                                        <div id="divDatosSalud" style="margin: 1%;">
+                                            <div class="container">
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-4">
+                                                        <label>Tipo de sangre</label>
+                                                        <div id="tiposangre" class="hwdbo-combo"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="estatura">Estatura en cm</label>
+                                                        <input type="number"
+                                                                class="form-control form-control-sm hwdbo-numero"
+                                                                id="estatura" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="peso">Peso en kg</label>
+                                                        <input type="number"
+                                                                class="form-control form-control-sm hwdbo-numero"
+                                                                id="peso" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-12">
+                                                        <label>Alergias</label>
+                                                        <textarea id="alergias"
+                                                                    rows="5"
+                                                                    maxlength="1000"
+                                                                    style="
+                                                                        width: 100%;
+                                                                        height: 80%;
+                                                                        max-height: 80%;
+                                                                        max-width: 100%;
+                                                                        "
+                                                                    class="form-control form-control-sm hwdbo-texto"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row espacio">
+                                                    <div class="col-md-12">
+                                                        <label>Tratamiento</label>
+                                                        <textarea id="tratamiento"
+                                                                    rows="5"
+                                                                    maxlength="1000"
+                                                                    style="
+                                                                    width: 100%;
+                                                                    height: 80%;
+                                                                    max-height: 80%;
+                                                                    max-width: 100%;
+                                                                    "
+                                                                    class="form-control form-control-sm hwdbo-texto"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <!--Div Botones del Tab -->
+                                                <div class="form-row" style="margin-top:2%">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button"
+                                                                style="margin:1%;display:none"
+                                                                class="hwdbo-boton"
+                                                                data-contenido="divDatosSalud"
+                                                                onclick="validaCampos(this);"
+                                                                title="Siguiente">
+                                                            <span>
+                                                                Siguiente
+                                                                <i class="fa fa-arrow-right"
+                                                                    aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" 
+                                                        class="hwdbo-boton" 
+                                                        data-contenido="divDatosSalud"
+                                                        onclick="TabLaborales(this);"><i class="fa fa-folder"></i> Datos laborales</button>
+                                                    </div>
+                                                </div>
+                                                <!--Div Botones del Tab -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab datos laborales -->
+                    <div>
+                        <div id="divDatosGeneralesLaborales" class="section" style="margin:1%;">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <h5 style="color:#138496;font-weight:600;">Información laboral</h5>
+                                        </button>
+                                    </h2>
+                                    </div>
+                                
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="container" style="margin-bottom:1%">
+                                            <div class="form-row espacio">
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="division">División:</label>
+                                                    <div id="division" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="departamento">Departamento:</label>
+                                                    <div id="departamento" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="puesto">Puesto:</label>
+                                                    <div id="puesto" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="patron">RFC del patrón:</label>
+                                                    <div id="patron" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row espacio">
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="registropatronal">Registro patronal:</label>
+                                                    <div id="registropatronal" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="localidad">Localidad/Sucursal:</label>
+                                                    <div id="localidad" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="esquemapago">Esquema de pago:</label>
+                                                    <div id="esquemapago" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="nombramiento">Nombramiento:</label>
+                                                    <div id="nombramiento" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row espacio">
+                                                <div class="col-md-3" id="divsindicato">
+                                                    <span class="obligado">* </span>
+                                                    <label for="sindicato">Sindicato:</label>
+                                                    <div id="sindicato" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="periodopago">Periodicidad de pago:</label>
+                                                    <div id="periodopago" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="moneda">Moneda de pago:</label>
+                                                    <div id="moneda" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="id_tabulador">Salario mensual:</label>
+                                                    <div id="id_tabulador" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row espacio">
+                                                <div class="col-md-3">
+                                                    <label for="OtroSueldo">Otro sueldo:</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-sm hwdbo-texto"
+                                                        id="OtroSueldo"
+                                                        maxlength="20" disabled/>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="salariodiario">Salario diario:</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-sm hwdbo-texto"
+                                                        id="salariodiario"
+                                                        maxlength="20" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="fechaantiguedad">Fecha de antiguedad:</label>
+                                                    <div id="fechaantiguedad" class="hwdbo-calendario aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="fechaingreso">Fecha de ingreso:</label>
+                                                    <div id="fechaingreso" class="hwdbo-calendario aweb0"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row espacio">                                                
+                                                <div class="col-md-6">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tipocontrato">Tipo de contrato:</label>
+                                                    <div id="tipocontrato" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tipojornada">Tipo de jornada:</label>
+                                                    <div id="tipojornada" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="paislabora">País donde labora:</label>
+                                                    <div id="paislabora" class="hwdbo-combo"></div>
+                                                </div>
+                                                <div class="col-md-3 espacio" id="FFin">
+                                                    <label>Fecha de final:</label>
+                                                    <div id="fechafinal" class="hwdbo-calendario"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row espacio">                                                
+                                                <div class="col-md-3">
+                                                    <div id="contratotemporal" class="hwdbo-checkBox">
+                                                        Contrato temporal
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" id="DivBaja">
+                                                    <div id="bajaautomatica" class="hwdbo-checkBox">
+                                                        ¿Aplica baja automatica?
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mex">
+                                    <div class="card-header" id="headingSocial">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSocial" aria-expanded="false" aria-controls="collapseSocial">
+                                                <h5 style="color:#cf6427;font-weight:600;">Salario base de cotización</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseSocial" class="collapse" aria-labelledby="headingSocial" data-parent="#accordionExample">
+                                        <div class="container">
+                                            <div class="form-row espacio" style="margin-bottom:2%">
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="salariobasecotizacion">Salario base cotización:</label>
+                                                    <input type="text" id="salariobasecotizacion" class="hwdbo-texto aweb0 form-control form-control-sm" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tiposalario">Tipo de salario:</label>
+                                                    <div id="tiposalario" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tipojornadaimss">Tipo jornada (IMSS):</label>
+                                                    <div id="tipojornadaimss" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tipotrabajador">Tipo trabajador (IMSS):</label>
+                                                    <div id="tipotrabajador" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                </div>
+                                <div class="card ">
+                                    <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <h5 style="color:#46aa8c;font-weight:600;"> Subcontratantes</h5>
+                                        </button>
+                                    </h2>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="form-row espacio" style="margin-bottom:2%">
+                                        <div class="col-md-12">
+                                            <center><div id="DivGridSubcontratante"></div></center>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="display:none">
+                                    <div class="card-header" id="headingPerfil">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsePerfil" aria-expanded="false" aria-controls="collapsePerfil">
+                                            <h5 style="color:#b63e70;font-weight:600;"> Perfil</h5>
+                                        </button>
+                                    </h2>
+                                    </div>
+                                    <div id="collapsePerfil" class="collapse" aria-labelledby="headingPerfil" data-parent="#accordionExample">
+                                        <div class="container">        
+                                            <div class="form-row espacio">
+                                                <div class="col-md-4">
+                                                    <label>Perfil de descansos:</label>
+                                                    <div id="perfildescanso" class="hwdbo-combo"></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Horario laboral:</label>
+                                                    <div id="horariolaboral" class="hwdbo-combo"></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <center><div id="homeoffice" class="hwdbo-checkBox" style="margin-top:7.5%">
+                                                        <label>¿Home Office?</label>
+                                                    </div></center>
+                                                </div>            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card _datosBaja">
+                                    <div class="card-header" id="headingBaja">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseBaja" aria-expanded="false" aria-controls="collapseBaja">
+                                            <h5 style="color:#b63e70;font-weight:600;"> Baja</h5>
+                                        </button>
+                                    </h2>
+                                    </div>
+                                    <div id="collapseBaja" class="collapse" aria-labelledby="headingBaja" data-parent="#accordionExample">
+                                        <div class="container">        
+                                            <div class="form-row espacio">
+                                                <div class="col-md-6">
+                                                    <span class="obligado">* </span>
+                                                    <label for="fechabaja">Fecha de baja</label>
+                                                    <div id="fechabaja" class="hwdbo-calendario aweb0"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span class="obligado">* </span>
+                                                    <label for="tipobaja">Tipo de baja</label>
+                                                    <div id="tipobaja" class="hwdbo-combo aweb0"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row espacio"
+                                                    style="margin-bottom: 1%">
+                                                <div class="col-md-12">
+                                                    <span class="obligado">* </span>
+                                                    <label for="observacionesbaja">Observaciones</label>
+                                                    <textarea id="observacionesbaja"
+                                                                rows="5"
+                                                                maxlength="1000"
+                                                                style="
+                                                        width: 100%;
+                                                        height: 80%;
+                                                        max-height: 80%;
+                                                        max-width: 100%;
+                                                        "
+                                                        placeholder="Observaciones..."
+                                                        class="form-control form-control-sm aweb0 hwdbo-text-area"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                        
+                            </div>
+
+                            <!--Div Botones del Tab -->
+                            <div class="form-row" style="margin-top:2%">
+                                <div class="col-md-12 text-right">
+                                    <button type="button"
+                                            style="margin: 1%"
+                                            id="btnGuardar"
+                                            class="hwdbo-boton"
+                                            data-contenido="divDatosGeneralesLaborales"
+                                            onclick="validaCamposGuardar(this);"
+                                            title="Guardar">
+                                        <span>                                                        
+                                            <i class="fa fa-save" aria-hidden="true"></i> Guardar
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!--Div Botones del Tab -->
+
+                            <!--Div Botones del Tab -->
+                            <!--<div class="form-row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button"
+                                            style="margin-top:1%"
+                                            class="hwdbo-boton"
+                                            data-contenido="divDatosGeneralesLaborales"
+                                            onclick="validaCampos(this);"
+                                            title="Siguiente">
+                                        <span>
+                                            Siguiente
+                                            <i class="fa fa-arrow-right"
+                                                aria-hidden="true"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>-->
+                            <!--Div Botones del Tab -->
+
+                        </div>
+                    </div>
+                    <!-- // Tab datos laborales -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <!--Modal's-->
+    <div id="divValidacionCampos" class="_modales-lg">
+        <!-- Encabezado -->
+        <div>
+            Validar campos
+        </div>
+        <!-- Cuerpo -->
+        <div>
+            <div id="lstValidaciones"></div>
+        </div>
+    </div>
+
+    <div id="divAvisos">
+        <div>
+            <span id="textoTituloAviso"></span>
+        </div>
+        <div>
+            <span id="textoAviso"></span>
+        </div>
+    </div>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- //Div Cargador -->
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-AltaEmpleado.js?v=3.1.3"></script>

@@ -1,0 +1,65 @@
+.fluentcard {
+    height: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    /* other styles */
+    background: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.fluentcard-title {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
+
+.fluentheader {
+    background: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.fluentBox {
+    background: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.fluentIconBox {
+    background: rgba(195, 232, 243, .3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 100px;
+    height: 100px;
+}
+
+.fluenttitlebar {
+    border-radius: 1rem;
+    /* other styles */
+    background: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.fluentContenedorInterno{
+    height: auto;
+    padding: 1rem;
+    border-radius: 20px;
+    /* other styles */
+    background: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.fluentContenedorInterno2{
+    height: auto;
+    padding: 1rem;
+    border-radius: 20px;
+    /* other styles */
+    background: #F0F0F0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}

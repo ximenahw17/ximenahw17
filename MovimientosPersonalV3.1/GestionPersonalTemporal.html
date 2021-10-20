@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" /> 
+
+    <style>
+        .espacio {margin-top: 3%;}
+
+        span {position: relative;}
+
+        i {padding-right: 5px;}
+
+        label {font-weight: 600;}
+
+        .obligado {color: red;}
+
+    </style>
+</head>
+<body>
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left">Consulta gestión de personal temporal</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuPrincipal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div> 
+            </div>           
+        </div>
+        <div id="divContenedorInterno" style="border: none;height:91%" class="fluentContenedorInterno">
+            <div id="DivGrid" style=" height: 100%;"></div>
+        </div>
+    </div>
+    <!-- //Div Contenido -->
+    <!-- Modales -->
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasRenovacion" aria-labelledby="offcanvasRenovacionLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasRenovacionLabel"><i class="fa fa-refresh consultamovsico"></i> Renovación de contrato</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idtipocontrato">Tipo contrato</label>
+                        <div id="idtipocontrato" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swtemporal">
+                            <label class="form-check-label" for="swtemporal">¿Contrato temporal?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%;">
+                    <div class="col-6 temp">
+                        <span class="obligado">*</span>
+                        <label for="fechafinal">Fecha de final</label>
+                        <div id="fechafinal" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%;">
+                    <div class="col temp">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swbajaauto">
+                            <label class="form-check-label" for="swbajaauto">¿Aplica baja automática?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="GuardaRenovacion();"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasBaja" aria-labelledby="offcanvasBajaLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasBajaLabel"><i class="fa fa-user-times consultamovsico"></i> Baja definitiva</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="fechabaja">Fecha de baja</label>
+                        <div id="fechabaja" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idtipobaja">Tipo baja</label>
+                        <div id="idtipobaja" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="mb-3">
+                        <span class="obligado">*</span>
+                        <label for="observaciones" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="observaciones" rows="5"></textarea>
+                      </div>
+                </div>
+
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="GuardarBaja();"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Modales-->
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-GestionPersonalTemporal.js?v=1.0.1"></script>

@@ -1,0 +1,147 @@
+﻿.panel-body-tramite {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.panel-body-tramite-bottom {
+    padding-bottom: 15px;    
+}
+
+th, td {
+    vertical-align:top !important;
+}
+
+
+
+/*#frmModalLogin > div {
+    margin-bottom: 25px;
+}
+
+#grupo_botones_ficha {
+    text-align:right;
+}
+
+#panel-heading-tramite {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.ancho-contenedor-fila {
+    width:100%;
+}
+
+.ancho-interno-top {
+    vertical-align:top; 
+    width:50%;
+}
+
+.cabecera-individual {
+    border-radius:4px 4px 0px 0px;
+    padding:0 15px;
+}
+
+.columna-imagen {
+    vertical-align:top;
+    width:25%; 
+}
+
+.columna-imagen img {    
+    width:100%; 
+}
+
+.encabezado-principal {
+    border-radius:4px 4px 0px 0px;
+    padding:10px 15px; 
+}
+
+.label-ficha {
+    font-weight:normal;
+}
+
+.margen-ficha {
+    width:100%; 
+    margin-top:5px;
+}
+
+.margen-panel {
+    width:99% !important;
+}
+
+
+
+.panel-body-tramite-top {
+    padding-top: 15px;    
+}
+
+
+
+.panel-heading-tramite-requisitos {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.panel-table-rounded {
+    border-radius: 8px 8px 8px 8px;
+}
+
+.tabla-estilo-ficha {
+    width:100%; 
+    border-style: solid; 
+    border-color: #bce8f1; 
+    width:100%;
+    border-width:1px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom:15px;
+}
+
+.tabla-titulo {
+    height:27px;
+    vertical-align:middle;
+    padding-left:15px; 
+    padding-right:15px; 
+    border-radius: 5px 5px 0px 0px;
+    background-color:#337ab7; 
+    color:white;
+    border:none;
+    font-weight:bold;
+}
+
+#silueta-min, #silueta-normal, #siluetaTR-min, #siluetaTR-normal {
+    display:none;
+}
+
+.tamanio-icono-default {
+    font-size:45px;
+}
+
+.ancho-direccion {
+    width:100%;
+}
+
+.ancho-direccion-col1 {
+    width:33%;
+}
+
+.ancho-direccion-col2 {
+    width:34%;
+}
+
+.scroll{
+    height:400px;
+    overflow:hidden;
+    overflow-y:scroll;
+}
+
+.scroll {
+    width:auto; 
+    height:93px; 
+    max-height:200px; 
+    padding: 3px; 
+    overflow-y:auto; 
+    overflow-x:hidden;
+}*/

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <!--Clippy -->
+    <link rel="stylesheet" type="text/css" href="../System/css/clippy.css" media="all">
+    <script src="../System/js/clippy.js"></script>
+    <style>
+        .obligado {color: red;}
+        
+        .modal-backdrop { display: none; }
+
+        .selected{
+            background-color: rgba(164, 206, 249, 0.2);
+            border:2px solid #4BAAD5;
+        }
+
+        .unselected{
+            background-color:#f5f6f7;
+            border:none;
+        }
+
+        .espacio{
+            margin-top: 1%;
+        }
+
+        label {
+            font-weight:600;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>    
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Reportes nómina</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuPrincipal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88%;overflow-y: auto;" class="fluentContenedorInterno2">
+            <div class="container-fluid">
+                <nav data-role="ribbonmenu">
+                    <ul class="tabs-holder">
+                        <li><a href="#section-1-1">Reportes</a></li>
+                        <li><a href="#section-1-2">Layouts</a></li>
+                    </ul>
+                
+                    <div class="content-holder">
+                        <div class="section" id="section-1-1">
+                            <div class="group">
+                                <button class="ribbon-button" onclick="ReporteExentoGravado();">
+                                        <span class="icon fa fa-list"></span>
+                                    <span class="caption">Exentos/Gravados</span>
+                                </button>
+                                <button class="ribbon-button" onclick="ReporteImpuestoHonduras();">
+                                    <span class="icon fa fa-calculator"></span>
+                                <span class="caption">Impuesto Honduras</span>
+                                </button>
+                                <button class="ribbon-button" onclick="ReporteListadoNomina();">
+                                    <span class="icon fa fa-list-alt"></span>
+                                <span class="caption">Listado de nómina</span>
+                                </button>
+                                <button class="ribbon-button" onclick="AdminVacaciones();">
+                                    <span class="icon fa fa-fighter-jet"></span>
+                                <span class="caption">Administración vacaciones</span>
+                                </button>
+                                <button class="ribbon-button" onclick="Plantilla();">
+                                    <span class="icon fa fa-users"></span>
+                                <span class="caption">Plantilla</span>
+                                </button>
+                
+                                <span class="title">Reportes</span>
+                            </div>
+                
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DescargaExcel();">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Excel</span>
+                                </button>
+
+                                <span class="title">Exportación</span>
+                            </div>
+                        </div>
+                        <div class="section" id="section-1-2">
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DispersionBancomer();">
+                                    <span class="icon fa fa-bank"></span>
+                                <span class="caption">Dispersión TXT</span>
+                                </button>
+
+                            <span class="title">BBVA Bancomer</span>
+                            </div>
+
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DispLayout(134)">
+                                    <span class="icon fa fa-file-code-o"></span>
+                                <span class="caption">Pagos interbancarios TXT</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DispLayout(138)">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Pagos interbancarios CSV</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DispLayout(135)">
+                                    <span class="icon fa fa-file-code-o"></span>
+                                <span class="caption">Transferencias exterior TXT</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DispLayout(139)">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Transferencias exterior CSV</span>
+                                </button>
+
+                            <span class="title">Davivienda</span>
+                            </div>
+
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DispLayout(136)">
+                                    <span class="icon fa fa-file-code-o"></span>
+                                <span class="caption">Dispersión TXT</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DispLayout(140)">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Dispersión CSV</span>
+                                </button>
+
+                            <span class="title">Ficosha</span>
+                            </div>
+
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DispLayout(137)">
+                                    <span class="icon fa fa-file-code-o"></span>
+                                <span class="caption">Dispersión TXT</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DispLayout(141)">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Dispersión CSV</span>
+                                </button>
+
+                            <span class="title">Bancaria popular</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+                <div id="DivGrid" style="height:100%;margin-top:1%"></div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <div style="width:42%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasReporte" aria-labelledby="offcanvasReporteLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasReportelLabel"><i class="fa fa-list consultamovsico"></i> <label id="lblTipoConsulta"></label></h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="grupo">Grupo empresarial</label>
+                        <div id="grupo" class="hwdbo-combo ini"></div>
+                    </div>
+                </div>  
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="razon">RFC del patrón</label>
+                        <div id="razon" class="hwdbo-combo cl"></div>
+                    </div>                     
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="registro">Registro patronal</label>
+                        <div id="registro" class="hwdbo-combo cl"></div>
+                    </div>
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="localidad">Localidad/Sucursal</label>
+                        <div id="localidad" class="hwdbo-combo cl"></div>
+                    </div>
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="esquema">Esquema pago</label>
+                        <div id="esquema" class="hwdbo-combo cl"></div>
+                    </div>                     
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="periodicidad">Periodicidad</label>
+                        <div id="periodicidad" class="hwdbo-combo ini"></div>
+                    </div>
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="anio">Año</label>
+                        <div id="anio" class="hwdbo-combo ini"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="periodo">Periodo</label>
+                        <div id="periodo" class="hwdbo-combo cl"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:8%">
+                    <div class="col">
+                        <center>
+                            <button id="BtnConsultar"  class="btn btn-primary consultamovs" onclick="DoReporte();"> Consultar</button>
+                            <button id="btnCreateFile" class="btn btn-primary consultamovs" > Generar</button> 
+                            <input type="text" id="txtBlob" style="display:none" />
+                            <a class="btn btn-primary consultamovs" download="DispersionBancomer.txt" id="downloadFile" style="display: none; margin-left: 1%;"> Descargar</a> 
+                        </center>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:42%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPlantilla" aria-labelledby="offcanvasPlantillaLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasPlantillalLabel"><i class="fa fa-list consultamovsico"></i> Plantilla</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="grupoPlantilla">Grupo empresarial</label>
+                        <div id="grupoPlantilla" class="hwdbo-comboPlantilla ini"></div>
+                    </div>
+                </div>  
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="razonPlantilla">RFC del patrón</label>
+                        <div id="razonPlantilla" class="hwdbo-comboPlantilla cl"></div>
+                    </div>                     
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="registroPlantilla">Registro patronal</label>
+                        <div id="registroPlantilla" class="hwdbo-comboPlantilla cl"></div>
+                    </div>
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="localidadPlantilla">Localidad/Sucursal</label>
+                        <div id="localidadPlantilla" class="hwdbo-comboPlantilla cl"></div>
+                    </div>
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="esquemaPlantilla">Esquema pago</label>
+                        <div id="esquemaPlantilla" class="hwdbo-comboPlantilla cl"></div>
+                    </div>                     
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="estatusPlantilla">Estatus</label>
+                        <div id="estatusPlantilla" class="hwdbo-comboPlantilla cl"></div>
+                    </div>                     
+                </div>
+                <div class="row" style="margin-top:8%">
+                    <div class="col">
+                        <center>
+                            <button id="BtnConsultarPlantilla"  class="btn btn-primary consultamovs" onclick="DoPlantilla();"> Consultar</button> 
+                        </center>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-ReportesNomina.js?v=1.0.7"></script>

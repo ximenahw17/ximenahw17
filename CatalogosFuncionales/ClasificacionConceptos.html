@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />    
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <style>
+        .obligado {color: red;}
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>    
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Clasificación de conceptos</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="CatalogosFuncionales">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88%;overflow-y: auto;" class="fluentContenedorInterno2">
+            <nav data-role="ribbonmenu">
+                <ul class="tabs-holder">
+                    <li><a href="#section-1-1">Clasificación</a></li>
+                </ul>
+            
+                <div class="content-holder">
+                    <div class="section" id="section-1-1">
+                        <div class="group">
+                            <button class="ribbon-button clasi" onclick="AgregarClasificacion();">
+                                    <span class="icon fa fa-plus-square"></span>
+                                <span class="caption">Agregar clasificación</span>
+                            </button>
+                            <button class="ribbon-button clasi" onclick="ModificarClasificacion();">
+                                <span class="icon fa fa-edit"></span>
+                            <span class="caption">Modificar clasificación</span>
+                            </button>
+            
+                            <span class="title">Acciones clasificación</span>
+                        </div>
+
+                        <div class="group">
+                            <button class="ribbon-button concepto" onclick="AgregarConcepto();">
+                                    <span class="icon fa fa-plus-circle"></span>
+                                <span class="caption">Agregar conceptos</span>
+                            </button>
+                            <button class="ribbon-button concepto" onclick="EliminarConcepto();">
+                                <span class="icon fa fa-close"></span>
+                            <span class="caption">Eliminar conceptos</span>
+                            </button>
+                            <button class="ribbon-button concepto" onclick="Regresar();">
+                                <span class="icon fa fa-chevron-left"></span>
+                            <span class="caption">Regresar</span>
+                            </button>
+            
+                            <span class="title">Acciones conceptos</span>
+                        </div>
+            
+                        <div class="group">
+                            <button class="ribbon-button" onclick="DescargaExcel();">
+                                <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Excel</span>
+                            </button>
+                            <span class="title">Exportación</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div id="DivGrid" style="height:100%;margin-top:1%"></div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasClasificacion" aria-labelledby="offcanvasClasificacionLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasClasificacionLabel"><i class="fa fa-plus-circle consultamovsico"></i> <label class="NombreBoton"></label> clasificación</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%;">   
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" style="display:none" id="IdClasi" value="0" />
+                            <input type="text" class="form-control form-control-sm" id="nombre" placeholder="nombre">
+                            <label for="nombre"><span class="obligado">*</span> Nombre clasificación</label>
+                        </div>
+                    </div>                  
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoAgregarClasi()"> <label class="NombreBoton"></label></button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasConcepto" aria-labelledby="offcanvasConceptoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasConceptoLabel"><i class="fa fa-plus-circle consultamovsico"></i> Agregar clasificación</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="tipoconcepto">Tipo concepto</label>
+                        <div id="tipoconcepto" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="conceptoclasi">Concepto</label>
+                        <div id="conceptoclasi" class="hwdbo-combo-multiple"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoAgregarConcepto()"> Agregar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-ClasificacionConceptos.js?v=1.0.0"></script>

@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom -->
+    <link href="../../System/css/custom.min.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../../assets/css/fluent.css" rel="stylesheet" />     
+    <!-- JQuery -->
+    <script src="../../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="../../System/Scripts/bootstrap.bundle.js"></script>
+    <script src="../../System/js/custom.min.js"></script>
+    <script src="../../System/plugins/jqwidgets/jqx-all.js"></script>
+    <script src="../../System/Scripts/JsEV.js"></script>
+    <script src="../../System/js/hwdbo-utilidades.js"></script>
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />  
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../../assets/movimientospersonalv3/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../../assets/movimientospersonalv3/js/jquery-confirm.min.js"></script>
+    <!-- HW -->
+    <link href="../../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../../System/Styles/loader.css" rel="stylesheet" />
+
+    <style>
+        .centrado {
+            margin-top: 3%;
+            text-align: center;
+        }
+
+        .espacio {
+            margin-top: 3%;
+        }
+
+        .card {
+            border-radius: 4px;
+            background: #fff;
+            box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+            transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+            padding: 14px 80px 18px 36px;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 10px 10px 5px 0px rgba(53,60,70,0.75);
+	        -webkit-box-shadow: 10px 10px 5px 0px rgba(53,60,70,0.75);
+	        -moz-box-shadow: 10px 10px 5px 0px rgba(53,60,70,0.75);
+        }
+
+        b{ font-size: 14px; color: #000;margin-bottom: 1.5%;}
+    </style>
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Consulta de movimientos de personal</span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedor" style="border: none" class="fluentContenedorInterno">
+            <div id="divContenedorInterno" style="border: none;height:94%" class="fluentContenedorInterno">               
+                <div class="container-fluid">
+                    <div class="form-row" style="margin-top:0.5%">
+                        <div class="col-md-6 offset-2">
+                            <b>Razón social:</b> <div id="SelRazonSocial"></div>
+                        </div>
+                    </div>
+                    <div id="DivBusqueda" class="form-row espacio" style="display:none;">
+                        <div class="col-md-6 offset-2">
+                            <input type="text" class="form-control form-control-sm" id="txtCUP" maxlength="18" placeholder="Ingrese CURP..." onkeyup="validaCURP(this);" />
+                        </div>
+                        <div class="col-md-2">
+                            <button id='jqxBtnBuscar'><i class="fa fa-search"></i>&nbsp;Buscar</button>
+                        </div>
+                    </div>                   
+                    <div class="splitter-panel fluentContenedorInterno" style="margin-top: 12%;display: none;">
+                        <div id="DivInfo" class="form-row" style="display:none;font-size:14px;margin-left:2%;margin-top:0.5%">
+                            <div class="col-md-3 offset-1">
+                                <dl>
+                                    <dt>Nombre:</dt>
+                                    <dd><label id="lblNombre"></label></dd>
+                                    <dt>Id_Ocupacion:</dt>
+                                    <dd><label id="lblOcupacion"></label></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-3">
+                                <dl>
+                                    <dt>Apellido paterno:</dt>
+                                    <dd><label id="lblPaterno"></label></dd>
+                                    <dt>Fecha nacimiento:</dt>
+                                    <dd><label id="lblFechaNac"></label></dd>
+                                </dl> 
+                            </div>
+                            <div class="col-md-3">
+                                <dl>
+                                    <dt>Apellido materno</dt>
+                                    <dd><label id="lblMaterno"></label></dd>
+                                </dl>
+                            </div>
+                            <div id="col-md-3">
+                                <dl>
+                                    <dt>NSS:</dt>
+                                    <dd><label id="lblNSS"></label></dd>
+                                </dl>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left:1%;margin-top: 17%;">
+                        <div class="col-md-3 offset-1 card-option" id="cardAltaEmpleado" data-estatus="1">
+                            <div class="x_panel altaspanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><h2 style="font-size: x-large;" class="altasico"><i class="fa fa-user-plus fa-lg altasico"></i> Alta</h2></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 offset-1 card-option" id="cardModificaEmpleado" data-estatus="3">
+                            <div class="x_panel modificacionespanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><h2 style="font-size: x-large;" class="modificacionesico"><i class="fa fa-edit fa-lg modificacionesico"></i> Modificación</h2></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 offset-1 card-option" id="cardBajaEmpleado" data-estatus="5">
+                            <div class="x_panel bajaspanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><h2 style="font-size: x-large;" class="bajasico"><i class="fa fa-user-times fa-lg bajasico"></i> Baja</h2></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row espacio" style="margin-left: 1%;">
+                        <div class="col-md-3 offset-1 card-option" id="cardReingresoEmpleado" data-estatus="2">
+                            <div class="x_panel nuevoingresopanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><h2 style="font-size: x-large;" class="nuevoingresoico"><i class="fa fa-user-plus fa-lg nuevoingresoico"></i> Reingreso</h2></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 offset-1 card-option" id="cardAltaRazonSocial" data-estatus="6">
+                            <div class="x_panel nuevoingresopanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><h2 style="font-size: x-large;" class="nuevoingresoico"><i class="fa fa-user-plus fa-lg nuevoingresoico"></i> Alta otro empleador</h2></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="form-row espacio">
+                        <div class="col-md-4 card-option" id="cardAltaEmpleado" data-estatus="1">
+                            <div class="card mb-0" style="border: 1px solid #fd7e14;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 centrado">
+                                        <i class="fa fa-user-plus fa-4x altasico"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title altasico">Alta</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 card-option" id="cardModificaEmpleado" data-estatus="3">                                
+                            <div class="card mb-0" style="border: 1px solid #D4AC0D;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 centrado">
+                                        <i class="fa fa-edit fa-4x modificacionesico"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title modificacionesico">Modificación</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 card-option" id="cardBajaEmpleado" data-estatus="5">
+                            <div class="card mb-0" style="border: 1px solid #dc3545;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 centrado">
+                                        <i class="fa fa fa-user-times fa-4x bajasico"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title bajasico">Baja</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row espacio">
+
+                        <div class="col-md-4 card-option" id="cardReingresoEmpleado" data-estatus="2">
+                            <div class="card mb-0" style="border: 1px solid #20c997;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 centrado">
+                                        <i class="fa fa fa-user-plus fa-4x nuevoingresoico"></i>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title nuevoingresoico">Reingreso</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 card-option" id="cardAltaRazonSocial" data-estatus="6">
+                            <div class="card mb-0" style="border: 1px solid #20c997;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3 centrado">
+                                        <i class="fa fa fa-user-plus fa-4x nuevoingresoico"></i>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title  nuevoingresoico" style="width:300px">Alta con otro empleador</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <!-- Modal´s-->
+    <div id="dialogWindow" class="_modales-sm">
+    </div>   
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->    
+</body>
+</html>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.filter.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.sort.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/JsEV.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-utilidades.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-Nuevoingreso.js"></script>

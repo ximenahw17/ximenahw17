@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom -->
+    <link href="../System/css/custom.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />     
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="../System/Scripts/bootstrap.bundle.js"></script>
+    <script src="../System/js/custom.min.js"></script>
+    <script src="../System/Scripts/JsEV.js"></script>
+    <script src="hwdbo-utilidades.js"></script>
+    <script src="hwdbo-MenuEnterpriseInformation.js"></script>  
+    <!-- Securty -->
+    <!-- <script src="General.js?v=1.0.0"></script>  -->
+
+    <style>
+        .centrado {
+            margin-top: 7%;
+            text-align: center;
+        }
+
+        .espacio {
+            margin-top: 6%;
+        }
+
+        .enter{margin-top: 1%;}
+
+        .offset-1 {
+            margin-left: 4.333333%;
+        }
+    </style>
+
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo" >
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Prototipo</span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-home" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Inicio</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedor" style="border: none" class="fluentContenedorInterno">
+            <div id="divContenedorInterno" style="border:none;height:93%;overflow-x:hidden;overflow-y:auto" class="fluentContenedorInterno">
+                <div class="container" style="margin:1%">
+                    <div class="col-lg-4 offset-1">
+                        <div class="col-md-12 col-sm-12">                               
+                            <div class="x_panel consultamovspanel" style="height: auto;" id="rz">
+                                <div class="x_title">                                       
+                                    <table style="width:100%;margin-top:-2%">
+                                        <tr>
+                                            <td><a href="page1.html"><h2 style="font-size: 1.6em;" class="consultamovsico"><img src="../assets/images/iconos_web/rs-ico.png" style="width: 80px; height: 80px;"/> Prototipo de Seguridad</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">                                                                               
+                                    <div class="row enter">
+                                        <div class="col-md-12"><p style="text-align:left">Protptipo de seguridad.</p></div>
+                                    </div>
+                                    <!-- <div class="row enter">
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="RazonesSociales.html?id=0"><span class="fa fa-plus"></span> Nuevo</a></center></div>
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="RazonesSociales.html"><span class="fa fa-search"></span> Consultar</a></center></div>
+                                    </div> -->
+                                </div>
+                            </div>                               
+                        </div>
+                        <!-- <div class="col-md-12 col-sm-12 espacio">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%;margin-top:-2%">
+                                        <tr>
+                                            <td><a href="RegistroPatronal.html"><h2 style="font-size: 1.6em;" class="consultamovsico"><img src="../assets/images/iconos_web/rp-ico.png" style="width: 80px; height: 80px;"/> Registro Patronal</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12"><p style="text-align:left">Bajas pendientes por autorizar.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="RegistroPatronal.html?id=0"><span class="fa fa-plus"></span> Nuevo</a></center></div>
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="RegistroPatronal.html"><span class="fa fa-search"></span> Consultar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-md-12 col-sm-12 espacio">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%;margin-top:-2%">
+                                        <tr>
+                                            <td><a href="DivisionUnidad.html"><h2 style="font-size: 1.6em;" class="consultamovsico"><img src="../assets/images/iconos_web/du-ico.png" style="width: 80px; height: 80px;"/> División / Unidad</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12"><p style="text-align:left">Asignaci&oacute;n de permisos para los usuarios.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="DivisionUnidad.html?id=0"><span class="fa fa-plus"></span> Nuevo</a></center></div>
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="DivisionUnidad.html"><span class="fa fa-search"></span> Consultar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%;margin-top:-2%">
+                                        <tr>
+                                            <td><a href="FIF.html"><h2 style="font-size: 1.6em;" class="consultamovsico"><img src="../assets/images/iconos_web/pl-ico.png" style="width: 80px; height: 80px;"/> Prestaciones Base Ley</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12"><p style="text-align:left">Asignaci&oacute;n de permisos para los usuarios.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="FIF.html?id=0"><span class="fa fa-plus"></span> Nuevo</a></center></div>
+                                        <div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="FIF.html"><span class="fa fa-search"></span> Consultar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%;margin-top:-2%">
+                                        <tr>
+                                            <td><a href="Calendario.html"><h2 style="font-size: 1.6em;" class="consultamovsico"><img src="../assets/images/iconos_web/pc-ico.png" style="width: 80px; height: 80px;"/> Perfil Calendario Nómina</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12"><p style="text-align:left">Asignaci&oacute;n de permisos para los usuarios.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <!--<div class="col-sm-6"><center><a class="btn btn-sm btn-primary consultamovs" href="SeptimoDia.html?id=0"><span class="fa fa-plus"></span> Nuevo</a></center></div>-->
+                                        <!--<div class="col-sm-3"><center><a class="btn btn-sm btn-primary consultamovs" href="Calendario.html"><span class="fa fa-search"></span> Consultar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>                    
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+</body>
+</html>

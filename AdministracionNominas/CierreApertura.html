@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/plugins/jqwidgets/jqx-all.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxcore.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxbuttons.js"></script>
+    <link href="../System/plugins/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../System/plugins/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" /> 
+    <link href="../System/plugins/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" /> 
+    <link href="../System/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <style>
+        .espacio { margin-top: 2%; }
+        .obligado { color: red; }
+        label { font-weight: 550; margin:5px; }
+        .negritas { font-weight: 550; }
+        .form-row { width: 99%; }
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+        #jqxtabs{ margin-top:-1.5%;margin-left:-1%; }
+    </style>
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-9">
+                    <span id="spanTitulo">Cierre y Apertura</span>
+                </div>
+                <div class="col-3 class-inicio" data-modulo="AdministracionNominas">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 5%;"><span class="casita"> Administración Nóminas</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:91%" class="fluentContenedorInterno2">
+            <div id="jqxtabs" style="margin:0%">
+                <ul>
+                    <li>Consulta</li>
+                </ul>
+                <div>
+                    <div class="container-fluid" id="divconsulta">
+                        <div class="row espacio">
+                            <div class="col-4">
+                                <span class="obligado">*</span>
+                                <label for="idgrupoempresarial">Grupo empresarial</label>
+                                <div id="idgrupoempresarial" class="hwdbo-combo"></div>
+                            </div>                      
+                        </div>
+                    </div>
+                    <div class="container-fluid" style="margin-top:1%">
+                        <div class="row">
+                            <div class="col-md-12" id="DivGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </div>
+    <!--Div Contenido-->
+	<!-- Modal -->  
+    <div style="height: 95%;" class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasValidacion" aria-labelledby="offcanvasValidacionLabel">
+        <div class="offcanvas-header">
+          <h4 class="offcanvas-title consultamovsico" id="offcanvasValidacionLabel"><i class="fa fa-check consultamovsico"></i> Resultado validación</h4>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="overflow-y: hidden;">                    
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button id="tabWarning" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Warnings</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button id="tabStopper" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Stoppers</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+            <div  class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <div id="DivWarning"></div>
+                    </div>
+                </div>
+            </div>
+            <div  class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <div id="DivStopper"></div>
+                    </div>                            
+                </div>
+            </div>
+            </div>
+            <div class="row" style="margin-top:1%;text-align:center;">
+                <div class="col">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="offcanvas" aria-label="Close">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasApertura" aria-labelledby="offcanvasAperturaLabel">
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasAperturaLabel"><i class="fa fa-unlock consultamovsico"></i> Apertura de nómina</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">                    
+        <div class="row" style="margin-top:1%">
+            <div class="col">
+                <span class="obligado">*</span>
+                <label for="clasificacion">Clasificación de nómina</label>
+                <div id="clasificacion" class="hwdbo-combo"></div>
+            </div>                      
+        </div>
+        <div class="row" style="margin-top:10%">
+            <div class="col">
+                <span class="obligado">*</span>
+                <label for="periodicidad">Perfil calendario</label>
+                <div id="periodicidad" class="hwdbo-combo"></div>
+            </div>                      
+        </div>
+        <div class="row" style="margin-top:10%">
+            <div class="col">
+                <span class="obligado">*</span>
+                <label for="periodo">Periodo</label>
+                <div id="periodo" class="hwdbo-combo"></div>
+            </div>                      
+        </div>
+        <div class="row" style="margin-top:10%">
+            <div class="col">
+                <span class="obligado">*</span>
+                <label for="perfil">Perfil de cálculo</label>
+                <div id="perfil" class="hwdbo-combo"></div>
+            </div>                      
+        </div>
+        <div class="row" style="margin-top:10%;display:none" id="DivNombreExtra">
+            <div class="col"> 
+                <div class="form-floating">
+                    <input id="txtNombreNominaExtra" type="text" class="form-control" placeholder="nombre nomina" />
+                    <label for="txtNombreNominaExtra"><span class="obligado">*</span> Nombre nómina extraordinaria</label>                   
+                  </div>
+            </div>                      
+        </div>
+        <div class="row" style="margin-top:15%">
+            <div class="col">
+                <center><button class="btn btn-lg btn-primary" onclick="Abrir()"> Aperturar</button></center>
+            </div>
+        </div>
+    </div>
+    </div>      
+    <!-- // Modal -->
+
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->   
+</body>
+</html>
+<!-- Jqxwidgets -->
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<!-- HW -->
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<!-- Local -->
+<script src="../System/js/hwdbo-CierreApertura.js?V=1.0.4"></script>

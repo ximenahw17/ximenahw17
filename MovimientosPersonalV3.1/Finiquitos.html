@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <style>
+        .obligado {color: red;}
+        
+        .modal-backdrop { display: none; }
+
+        .selected{
+            background-color: rgba(164, 206, 249, 0.2);
+            border:2px solid #4BAAD5;
+        }
+
+        .unselected{
+            background-color:#f5f6f7;
+            border:none;
+        }
+
+        .espacio{
+            margin-top: 1%;
+        }
+
+        label {
+            font-weight:600;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="Calculando" class='loader__wrapper' style="display:none">        
+        <img src="../assets/images/iconos_web/engranes2.gif" style="width:300px;height:250px" />
+    </div>    
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Finiquitos de empleados</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuPrincipal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88%;overflow-y: auto;" class="fluentContenedorInterno2">
+            <div class="container-fluid">
+                <nav data-role="ribbonmenu">
+                    <ul class="tabs-holder">
+                        <li><a href="#section-1-1">Finiquitos</a></li>
+                    </ul>
+                
+                    <div class="content-holder">
+                        <div class="section" id="section-1-1">
+                            <div class="group">
+                                <button id="BtnPlantilla" class="ribbon-button" onclick="Inicio();">
+                                        <span class="icon fa fa-users"></span>
+                                    <span class="caption">Plantilla de personal</span>
+                                </button>
+                                <button id="BtnSimulacion" class="ribbon-button" onclick="Simulacion();">
+                                    <span class="icon fa fa-random"></span>
+                                <span class="caption">Simulación de finiquito</span>
+                                </button>
+                                <button id="BtnConsulta" class="ribbon-button" onclick="ConsultaFiniquitos();">
+                                    <span class="icon fa fa-search"></span>
+                                <span class="caption">Consulta de finiquitos</span>
+                                </button>
+                
+                                <span class="title">Finiquitos</span>
+                            </div>
+                
+                            <div class="group">
+                                <button class="ribbon-button inicio simula" onclick="AccionFini(1);">
+                                    <span class="icon fa fa-close"></span>
+                                <span class="caption">Eliminar</span>
+                                </button>
+                                <button class="ribbon-button inicio simula" onclick="AccionFini(2);">
+                                    <span class="icon fa fa-check"></span>
+                                <span class="caption">Autorizar</span>
+                                </button>
+                
+                                <span class="title">Acciones finiquitos</span>
+                            </div>
+
+                            <div class="group">
+                                <button class="ribbon-button inicio recibos" onclick="">
+                                        <span class="icon fa fa-file-excel-o"></span>
+                                    <span class="caption">Imprimir simulación</span>
+                                </button>
+                                <button class="ribbon-button inicio recibos" onclick="">
+                                    <span class="icon fa fa-map-o"></span>
+                                <span class="caption">Imprimir formatos</span>
+                                </button>
+                                <button id="BtnPagoRibbon" class="ribbon-button inicio" onclick="Pago();">
+                                    <span class="icon fa fa-money"></span>
+                                <span class="caption">Pago finiquito</span>
+                                </button>                                
+                                <button class="ribbon-button inicio recibos" onclick="">
+                                    <span class="icon fa fa-list"></span>
+                                <span class="caption">Timbrado/Recibo</span>
+                                </button>
+                
+                                <span class="title">Recibos</span>
+                            </div>
+
+                            <div class="group">
+                                <button id="BtnAutorizaGuarda" class="ribbon-button inicio" onclick="Guardar()">
+                                    <span class="icon fa fa-edit"></span>
+                                <span class="caption">Actualizar y Guardar</span>
+                                </button>
+                
+                                <span class="title">Modificar finiquito</span>
+                            </div>
+
+                            <div class="group">
+                                <button class="ribbon-button inicio" onclick="ExportarSimulacion()">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                    <span class="caption">Exportar simulación</span>
+                                </button>
+                                <button class="ribbon-button" onclick="DescargaExcel();">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                    <span class="caption">Excel</span>
+                                </button>
+                                <span class="title">Exportación</span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div id="DivGrid" style="height:100%;margin-top:1%"></div>
+                <div id="DivDatosFiniquito" class="container-fluid" style="height:100%;margin-top:1%;display:none">
+                    <div class="accordion" id="accordionDatosGenerales">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingDatos">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatos" aria-expanded="true" aria-controls="collapseDatos">
+                              Datos generales
+                            </button>
+                          </h2>
+                          <div id="collapseDatos" class="accordion-collapse collapse show" aria-labelledby="headingDatos" data-bs-parent="#accordionDatosGenerales">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="NoEmpleado">No. empleado</label>
+                                        <input type="text" value="0" id="Id_CapturaFiniquito" style="display:none" class="hwdbo-texto" />
+                                        <input type="text" value="" id="txtEstatus" style="display:none" class="hwdbo-texto" />
+                                        <input type="text" value="" id="txtNeto" style="display:none" class="hwdbo-texto" />
+                                        <input type="text"
+                                                class="form-control form-control-sm hwdbo-texto"
+                                                disabled="disabled"
+                                                id="NoEmpleado"
+                                                maxlength="10"
+                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="Nombre">Nombre</label>
+                                        <input type="text"
+                                                class="form-control form-control-sm hwdbo-texto"
+                                                id="Nombre"
+                                                maxlength="30" />
+                                    </div>
+                                    <div class="col-3 mex">
+                                        <label for="RFCEmpleado">RFC</label>
+                                        <input type="text"
+                                                class="form-control form-control-sm  hwdbo-texto"
+                                                id="RFCEmpleado"
+                                                maxlength="13" />
+                                    </div>
+                                </div>
+                                <div class="row espacio">
+                                    <div class="col-3">
+                                        <label for="CURP" id="lblcurp">CURP</label>
+                                        <input type="text"
+                                                class="form-control form-control-sm hwdbo-texto"
+                                                id="CURP"
+                                                maxlength="18" />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="NSS">NSS</label>
+                                        <input type="text"
+                                                class="form-control form-control-sm hwdbo-texto"
+                                                id="NSS"
+                                                maxlength="11"
+                                                onkeypress="javascript:return onlyIntNumber(event)" />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="Salariomensual">Salario mensual</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Salariomensual"
+                                        maxlength="20" />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="Periodicidaddepago">Periodicidad de pago</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Periodicidaddepago"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row espacio">
+                                    <div class="col-3">
+                                        <label for="Puesto">Puesto</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Puesto"
+                                        />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="Departamento">Departamento</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Departamento"
+                                        />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="RFCPatronal">RFC del patrón</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="RFCPatronal"
+                                        />
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="Esquemadepago">Sindicato</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Esquemadepago"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row espacio">
+                                    <div class="col-6">
+                                        <label for="Tipodecontrato">Tipo de contrato</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Tipodecontrato"
+                                        />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Localidad">Localidad</label>
+                                        <input type="text"
+                                        class="form-control form-control-sm hwdbo-texto"
+                                        id="Localidad"
+                                        />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Fechadeantiguedad">Fecha de antiguedad</label>
+                                        <div id="Fechadeantiguedad" class="hwdbo-calendario"></div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div> 
+                    </div>
+                    <div class="accordion" id="accordionDatosFiniquitos">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFini">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFini" aria-expanded="false" aria-controls="collapseFini">
+                                Datos finiquitos
+                              </button>
+                            </h2>
+                            <div id="collapseFini" class="accordion-collapse collapse" aria-labelledby="headingFini" data-bs-parent="#accordionDatosFiniquitos">
+                              <div class="accordion-body">
+                                  <div class="row">
+                                      <div class="col-3">
+                                          <label for="Id_TipoFecha">Fecha inicio de finiquitos</label>
+                                          <div id="Id_TipoFecha" class="hwdbo-combo"></div>
+                                      </div>
+                                      <div class="col-3">
+                                          <label for="Id_TipoFiniquito">Tipo de finiquito</label>
+                                          <div id="Id_TipoFiniquito" class="hwdbo-combo"></div>
+                                      </div>
+                                      <div class="col-3">
+                                          <label for="Id_TipoBaja">Tipo de baja</label>
+                                          <div id="Id_TipoBaja" class="hwdbo-combo"></div>
+                                      </div>
+                                      <div class="col-3">
+                                          <label for="Fechadebaja">Fecha de baja</label>
+                                          <div id="Fechadebaja" class="hwdbo-calendario"></div>
+                                      </div>
+                                  </div>
+                                  <div class="row espacio">
+                                      <div class="col-12">
+                                          <label for="Observaciones">Observaciones</label>
+                                          <textarea id="Observaciones"
+                                                      rows="5"
+                                                      maxlength="1000"
+                                                      style="
+                                              width: 100%;
+                                              height: 80%;
+                                              max-height: 80%;
+                                              max-width: 100%;
+                                              "
+                                              placeholder="Observaciones..."
+                                              class="form-control form-control-sm hwdbo-text-area"></textarea>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionPercepciones">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingP">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseP" aria-expanded="false" aria-controls="collapseP">
+                                Percepciones
+                              </button>
+                            </h2>
+                            <div id="collapseP" class="accordion-collapse collapse" aria-labelledby="headingP" data-bs-parent="#accordionPercepciones">
+                              <div class="accordion-body">
+                                  <div id="DivPer"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionDeducciones">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingD">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseD" aria-expanded="false" aria-controls="collapseD">
+                                Deducciones
+                              </button>
+                            </h2>
+                            <div id="collapseD" class="accordion-collapse collapse" aria-labelledby="headingD" data-bs-parent="#accordionDeducciones">
+                              <div class="accordion-body">
+                                    <div id="DivDed"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionAportaciones">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingA">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseA" aria-expanded="false" aria-controls="collapseA">
+                                Aportaciones
+                                </button>
+                            </h2>
+                            <div id="collapseA" class="accordion-collapse collapse" aria-labelledby="headingA" data-bs-parent="#accordionAportaciones">
+                                <div class="accordion-body">
+                                    <div id="DivAp"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionTotales">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTotales">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTotales" aria-expanded="false" aria-controls="collapseTotales">
+                                Totales
+                              </button>
+                            </h2>
+                            <div id="collapseTotales" class="accordion-collapse collapse show" aria-labelledby="headingTotales" data-bs-parent="#accordionTotales">
+                              <div class="accordion-body">
+                                <div id="DivTotales"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasSimulacion" aria-labelledby="offcanvasSimulacionLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasSimulacionLabel"><i class="fa fa-calculator consultamovsico"></i> Simulación finiquito</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="fechabene">Fecha inicio de beneficios</label>
+                        <div id="fechabene" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="tipofini">Tipo de finiquito</label>
+                        <div id="tipofini" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="fechabaja">Fecha de baja</label>
+                        <div id="fechabaja" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="tipobaja">Tipo de baja</label>
+                        <div id="tipobaja" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%;">   
+                    <div class="col">
+                        <label for="observaciones" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                    </div>                   
+                </div>
+                <div class="row" style="margin-top:15%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoSimulacion()"> Calcular</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasConceptos" aria-labelledby="offcanvasConceptosLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasConceptosLabel"><i class="fa fa-list consultamovsico"></i>&nbsp;<label id="lblTituloConceptos"></label></h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idconcepto">Concepto</label>
+                        <div id="idconcepto" class="hwdbo-combo"></div>
+                        <input id="txttipoconcepto" value="0" type="text" style="display:none;">
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-sm" id="importe" placeholder="importe">
+                            <label for="importe"><span class="obligado">*</span> Importe</label>
+                        </div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%;">   
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-sm" id="gravable" placeholder="gravable">
+                            <label for="gravable"><span class="obligado">*</span> Gravable</label>
+                        </div>
+                    </div>                  
+                </div>
+                <div class="row" style="margin-top:10%;">   
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-sm" id="exento" placeholder="exento">
+                            <label for="exento"><span class="obligado">*</span> Exento</label>
+                        </div>
+                    </div>                  
+                </div>
+                <div class="row" style="margin-top:15%">
+                    <div class="col">
+                        <center><button id="BotonConceptosAdd" class="btn btn-primary consultamovs" onclick="AgregarConcepto();">Agregar</button></center>
+                        <center><button id="BotonConceptosEdit" class="btn btn-primary consultamovs" onclick="EditarConcepto();">Editar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPago" aria-labelledby="offcanvasPagoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasPagoLabel"><i class="fa fa-money consultamovsico"></i> Pago finiquito</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" id="RowPago" style="margin-top:1%">
+                </div>
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idperiodopago">Periodo</label>
+                        <div id="idperiodopago" class="hwdbo-combo"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15%">
+                    <div class="col">
+                        <center>
+                            <button id="BtnPago" class="btn btn-primary consultamovs" onclick="DoPago();">Agregar</button>
+                            <a id="LinkApertura" href="/AdministracionNominas/CierreApertura.html" class="btn btn-primary consultamovs" style="display: none;">Abrir nómina</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-Finiquitos.js?v=1.1.3"></script>

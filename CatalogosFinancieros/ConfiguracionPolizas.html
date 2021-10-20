@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<!-- <html> -->
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/plugins/jqwidgets/jqx-all.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxbuttons.js"></script>
+    <link href="../System/plugins/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />
+    <script src="../System/plugins/jqwidgets/jqxcore.js"></script>
+    <link href="../System/plugins/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <link href="../System/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap -->
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <style>
+        .form-row {
+            width: 99%;
+        }
+
+        .espacio {
+            margin-top: 3%;
+        }
+
+        span {
+            position: relative;
+        }
+
+        i {
+            padding-right: 5px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        .obligado {
+            color: red;
+        }
+
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+
+
+        ._hideNav {
+            display: none;
+        }
+
+        ._modales-sm {
+            display: none;
+        }
+
+        ._modales-lg {
+            display: none;
+        }
+
+
+        #jqxResponsivePanel,
+        #content {
+            float: left;
+        }
+
+        .jqx-rc-all {
+            border-radius: 0px;
+        }
+
+        .jqx-tabs-content {
+            height: 100% !important;
+            max-height: 100% !important;
+            min-height: 100% !important;
+        }
+
+        #mapid {
+            height: 300px;
+            width: 98%;
+            position: inherit;
+        }
+
+        .btn-link {
+            font-weight: 400;
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            color: black;
+            text-decoration: none;
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        .btn-link.focus,
+        .btn-link:focus {
+            text-decoration: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            /*background-color: #F1F3F6;
+        border: 1px solid #F1F3F6;*/
+        }
+
+        .dinamic {
+            transition: all 0.1s;
+            height: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dinamic:hover {
+            transform: scale(1.03);
+            box-shadow: 10px 10px 5px 0px rgba(53, 60, 70, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(53, 60, 70, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(53, 60, 70, 0.75);
+        }
+
+        .etiqueta {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+
+        .class-link {
+            padding: 5px;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        .class-link:active {
+
+            transform: translateY(4px);
+        }
+
+        .percent {
+            width: 38px !important;
+            height: 30px !important;
+            position: absolute;
+            margin-top: 18px;
+            left: 22px;
+        }
+
+        .disable-div {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="hidden" id="hdnId_Poliza">
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->
+    <!-- / CARGADOR -->
+
+    <!--Input type:hidden-->
+    <form><input type="hidden" id="IdcuentaContable" /></form>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-10">
+                    <span id="spanTitulo" style="text-align: left">Configuración de Pólizas</span>
+                </div>
+                <div class="col-1 class-regresar">
+                    <i class="fa fa-chevron-circle-left" style="color:black"><span
+                            style="font-family: 'Trebuchet MS';font-size: 18px"> Regresar</span></i>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuMovimientosPersonal">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px">
+                            Menu</span></i>
+                </div>
+            </div>
+        </div>
+       
+            <div id="divContenedorInterno" style="border: none;height:91%" class="fluentContenedorInterno2">
+                <div class="splitter-panel" style="border: none">
+                    <div id="jqxtabs" style="border:none">
+                        <ul>
+                            <li>Catálogo: Configuración de Pólizas</li>
+                            <li>Accion: </li>
+                        </ul>
+                        <!-- Tab Consulta -->
+                        <div style="border: none">
+                            <div id="gridConsulta"></div>
+                        </div>
+                        <!--Tab  Agregar -->
+                        <div>
+                            <!-- Formulario de polizas -->
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Información de Póliza
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div id="divInfoPoliza" class="accordion-body">
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <label for="noempleado">Clave</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-sm hwdbo-texto"
+                                                            id="ifoPol_clave" />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <label for="noantecedente">Descripción</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-sm hwdbo-texto "
+                                                            id="ifoPol_descripcion" />
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label for="idsubunidad">Tipo de Póliza</label>
+                                                        <div id="ifoPol_tipopoliza" class="hwdbo-combo aweb0 "></div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <label for="idsubunidad">Grupo de Calculo</label>
+                                                        <div id="ifoPol_grupocalculo"
+                                                            class="hwdbo-combo aweb0 combo-check"></div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <label for="idsubunidad">Aplicación</label>
+                                                        <div id="ifoPol_aplicacion"
+                                                            class="hwdbo-combo aweb0 combo-check"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            Configuración de Cuentas
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <h5>Cuentas Contables</h5>
+                                            <div class="row espacio">
+                                                <div class="col-md-12">
+                                                    <div id="gridCuentaContable"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row espacio">
+                                                <div class="col-3">
+                                                    <button class="hwdbo-boton" id="concuen_agregar"
+                                                        style="margin-right: 10px !important;width:210px ;"><i
+                                                            class="fa fa-plus"></i> Agregar cuenta </button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <select class="hwdbo-combo" name="concuen_cargo" id="concuen_cargo">
+                                                        <option value="a">Abono</option>
+                                                        <option value="c">Cargo</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <select class="hwdbo-combo" name="concuen_operador"
+                                                        id="concuen_operador">
+                                                        <option value="+">Suma</option>
+                                                        <option value="-">Resta</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <h5>Cuentas Pólizas</h5>
+                                            <div class="row espacio">
+                                                <div class="col-md-12">
+                                                    <div id="gridCuentaPoliza"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            Detalle de Pólizas
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="row espacio">
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_grupcalculo" data-label="GrupoDeCalculo">
+                                                        <label class="form-check-label" for="detpol_grupcalculo">Grupo
+                                                            de Cálculo</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_razonsocial" data-label="RazonSocial">
+                                                        <label class="form-check-label" for="detpol_razonsocial">Razon
+                                                            Social</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_localidad" data-label="Localidad">
+                                                        <label class="form-check-label"
+                                                            for="detpol_localidad">Localidad</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_regpatronal" data-label="RegistroPatronal">
+                                                        <label class="form-check-label"
+                                                            for="detpol_regpatronal">Registro Patronal</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_division" data-label="Division">
+                                                        <label class="form-check-label"
+                                                            for="detpol_division">Division</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_subdivision" data-label="SubDivision">
+                                                        <label class="form-check-label"
+                                                            for="detpol_subdivision">Subdivision</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_puesto" data-label="Puesto">
+                                                        <label class="form-check-label"
+                                                            for="detpol_puesto">Puesto</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_esquemapago" data-label="EsquemaDePago">
+                                                        <label class="form-check-label" for="detpol_esquemapago">Esquema
+                                                            de Pago</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="detpol_centrocostos" data-label="CentroDeCosotos">
+                                                        <label class="form-check-label" for="detpol_centrocostos">Centro
+                                                            de Contos</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseFour" aria-expanded="false"
+                                            aria-controls="collapseFour">
+                                            Condiciones de la Póliza
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="row espacio">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="conpol_razonactiva">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_razonporcentaje">Porcentaje de Aplicación</label>
+                                                    <input type="text" class="form-control form-control-sm hwdbo-texto "
+                                                        id="conpol_razonporcentaje" maxlength="2"
+                                                        onkeypress="javascript:return onlyIntNumber(event)" />
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_razonsocial">Razon Social</label>
+                                                    <div id="conpol_razonsocial" class="hwdbo-combo aweb0 combo-check">
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_razonlocalidad">Localidad</label>
+                                                    <div id="conpol_razonlocalidad"
+                                                        class="hwdbo-combo aweb0 combo-check"></div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_razonregistropatronal">Registro Patronal</label>
+                                                    <div id="conpol_razonregistropatronal"
+                                                        class="hwdbo-combo aweb0 combo-check">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row espacio">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="conpol_divactiva">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="noantecedente">Porcentaje de Aplicación</label>
+                                                    <input type="text" class="form-control form-control-sm hwdbo-texto "
+                                                        id="conpol_divporcentaje" maxlength="2"
+                                                        onkeypress="javascript:return onlyIntNumber(event)" />
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_divdivision">Division</label>
+                                                    <div id="conpol_divdivision" class="hwdbo-combo aweb0 combo-check">
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_divsubdivision">Subdivision</label>
+                                                    <div id="conpol_divsubdivision"
+                                                        class="hwdbo-combo aweb0 combo-check"></div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_divpusto">Puesto</label>
+                                                    <div id="conpol_divpusto" class="hwdbo-combo aweb0 combo-check">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row espacio">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="conpol_esquemaactiva">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_esquemaporcentaje">Porcentaje de
+                                                        Aplicación</label>
+                                                    <input type="text" class="form-control form-control-sm hwdbo-texto "
+                                                        id="conpol_esquemaporcentaje" maxlength="2"
+                                                        onkeypress="javascript:return onlyIntNumber(event)" />
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_esquemaesquemapago">Esquema de Pago</label>
+                                                    <div id="conpol_esquemaesquemapago"
+                                                        class="hwdbo-combo aweb0 combo-check"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row espacio">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="conpol_cencostactiva">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_cencostporcentaje">Porcentaje de
+                                                        Aplicación</label>
+                                                    <input type="text" class="form-control form-control-sm hwdbo-texto "
+                                                        id="conpol_cencostporcentaje" maxlength="2"
+                                                        onkeypress="javascript:return onlyIntNumber(event)" />
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="conpol_cencoscentrocosto">Centro de Costos</label>
+                                                    <div id="conpol_cencoscentrocosto"
+                                                        class="hwdbo-combo aweb0 combo-check"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row espacio">
+                                <div class="col-md-6" data-modulo="CuentasContables">
+                                    <center><button id="BtnInicio" class="hwdbo-boton"
+                                            onclick="window.location.reload();"><i class="fa fa-home"></i>
+                                            Inicio</button></center>
+                                </div>
+                                <div class="col-md-6">
+                                    <center><button id="BtnGuardar" class="hwdbo-boton" data-contenido="DivCampos"
+                                            onclick="save();"><i class="fa fa-save"></i> Guardar</button>
+                                    </center>
+                                </div>
+                            </div>
+                            <!-- Termina formulario de polizas -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    <!--Div Contenido-->
+
+
+</body>
+
+</html>
+
+<!-- Bootstrap -->
+<script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
+<!-- Jqxwidgets -->
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+
+<!-- Confirm -->
+<script src="../System/js/jquery-confirm.min.js"></script>
+
+<!-- Excel -->
+<script src="../System/js/xlsx.core.min.js"></script>
+<script src="../System/js/xlsx.full.min.js"></script>
+
+<!-- HW -->
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+
+<script src="../System/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
+<!-- Local -->
+<script src="../System/js/hwdbo-ConfiguracionPolizas.js"></script>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    
+    <!-- Jqxwidgets -->
+    
+    <link href="../System/plugins/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../System/plugins/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />  
+    <link href="../System/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    
+<style>
+        .espacio { margin-top: 3%; }
+        .obligado { color: red; }
+        label { font-weight: 550; }
+        .form-row { width: 99%; }
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+        .class-link {
+            padding: 5px;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        
+        .class-link:active {
+        
+        transform: translateY(4px);
+        }
+        .modal.right_modal{
+            position: fixed;
+            z-index: 99999;
+        }
+        .modal.right .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 35%;
+            height: 100%;
+            right: 0;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+        .modal.right .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+        .modal.right .modal-body {
+            padding: 15px 15px 80px;
+        }
+      
+        /*Right*/
+        .modal.right.fade .modal-dialog {
+            right: -320px;
+            -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+        }
+        .modal.right.fade.show .modal-dialog {
+            right: 0;
+        }
+        .modal-backdrop {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-6">
+                    <span id="spanTitulo">Centro de costos empleados</span>
+                </div>
+                
+                <div  id="IdMCCHtml" class="col-3" data-modulo="CentroDeCostos">
+                    <i class="fa fa-bars class-link" style="color: black;"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Centro de costos</span></i>
+                </div>
+                <div class="col-3 class-inicio" data-modulo="CatalogoFinancieros">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Catálogos Financieros</span></i>
+                </div>
+            </div>
+        </div>
+       
+            <div id="divContenedorInterno"  style="border: none;height:91%" class="fluentContenedorInterno2">                
+                <div class="splitter-panel">                                        
+                    <div id="jqxtabs" style="margin:0.1px;border:none">
+                        <ul>
+                            <li>Consulta</li>
+                            <li></li>
+                        </ul>
+                        <div>
+                            <div class="form-row">
+                                <div class="col-md-12" id="DivGrid"></div>
+
+                            </div>
+                            	<!-- Modal -->
+                                <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content fluentContenedorInterno">
+    
+                                            <div class="modal-header">					
+                                                <h4 class="modal-title consultamovsico" id="myModalLabel2"><i class="fa fa-plus-circle consultamovsico"></i> Centro de costos empleado</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+    
+                                            <div class="modal-body">
+                                                <!-- <center><h4>Seleccione calendario a crear:</h4></center>                     -->
+                                                <div class="container">
+                                                    <div class="form-row" style="margin-top:10%">
+                                                        <div class="col-md-8 offset-2">
+                                                            <span class="obligado">* </span>
+                                                            <label for="idCentroCostos">Centro de costos</label>
+                                                            <div id="idCentroCostos" class="hwdbo-combo"></div>
+                                                        </div>                      
+                                                    </div>
+                                                    <div class="form-row" style="margin-top:10%">
+                                                        <div class="col-md-8 offset-2">
+                                                            <span class="obligado">* </span>
+                                                            <label for="idPeriodos">Periodo de aplicación</label>
+                                                            <div id="idPeriodos" class="hwdbo-combo"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row" style="margin-top:10%">
+                                                        <div class="col-md-8 offset-2">
+                                                            <center><button class="btn btn-primary consultamovs" onclick="validaCampos(this);"> Aplicar</button></center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- modal-content -->
+                                    </div><!-- modal-dialog -->
+                                </div><!-- modal -->  
+                        </div>
+                        <div id="DivCampos" class="container">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    <!--Div Contenido-->
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->   
+</body>
+</html>
+<!-- JQuery -->
+<script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+<!-- Jqxwidgets -->
+<script src="../System/plugins/jqwidgets/jqx-all.js"></script>
+<script src="../System/plugins/jqwidgets/jqxcore.js"></script>
+<script src="../System/plugins/jqwidgets/jqxbuttons.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<!-- HW -->
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<!-- Confirm -->
+<script src="../System/js/jquery-confirm.min.js"></script>
+  <!-- Excel -->
+  <script src="../System/js/xlsx.core.min.js"></script>
+  <script src="../System/js/xlsx.full.min.js"></script>
+  <!-- Bootstrap -->
+ 
+  <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+<!-- Local -->
+<script src="../System/js/hwdbo-CentroDeCostosEmpleado.js"></script>

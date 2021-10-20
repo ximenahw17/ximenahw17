@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Movimientos de personal v3</title>
+    <!-- Font Awesome -->
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../../assets/movimientospersonalv3/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../../assets/movimientospersonalv3/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../../assets/movimientospersonalv3/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../../assets/movimientospersonalv3/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../../assets/css/fluent.css" rel="stylesheet" />
+
+    <style>
+        .espacio {
+            margin-top: 3%;
+            /*margin-bottom: 2%;*/
+        }
+
+        span {
+            position: relative;
+            /*font-weight: bold;*/
+        }
+
+        i {
+            padding-right: 5px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        .obligado {
+            color: red;
+        }
+
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+
+        ._hideNav {
+            display: none;
+        }
+
+        ._modales-sm {
+            display: none;
+        }
+
+        ._modales-lg {
+            display: none;
+        }
+
+        .jqx-rc-all {
+            border-radius: 0px;
+        }
+
+        .jqx-tabs-content {
+            height: 100% !important;
+            max-height: 100% !important;
+            min-height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left">Consulta de movimientos</span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Menu</span></i>
+                </div> 
+            </div>           
+        </div>
+        <div id="divContenedor" style="border: none" class="fluentContenedorInterno">
+            <div id="divContenedorInterno" style="border: none;height:99%" class="fluentContenedorInterno">
+                <div id="DivgdEmpleados" style=" height: 100%;margin-top:-0.5%"></div>
+            </div>
+        </div>
+    </div>
+    <!-- //Div Contenido -->
+
+</body>
+</html>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.filter.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.sort.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/JsEV.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-utilidades.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-ConsultaMovimientosPersonal.js"></script>

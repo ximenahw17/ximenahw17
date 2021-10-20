@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+
+    <style>
+        .espacio { margin-top: 3%; }
+
+        span { position: relative; }
+
+        i { padding-right: 5px; }
+
+        label { font-size: 14px; }
+
+        .jqx-rc-all { border-radius: 0px; }
+      
+        .modal-backdrop { display: none; }
+
+        .obligado {color: red;}
+
+        .selected{
+            background-color: rgba(164, 206, 249, 0.2);
+            border:2px solid #4BAAD5;
+        }
+
+        .unselected{
+            background-color:#f5f6f7;
+            border:none;
+        }
+
+        .form-floating>.form-control, .form-floating>.form-select {
+        height: calc(2.5rem + 2px);
+        line-height: 1.25;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>    
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left">Autorización movimimentos de nómina</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuPrincipal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border: none;height:88%" class="fluentContenedorInterno2">
+            <nav data-role="ribbonmenu">
+                <ul class="tabs-holder">
+                    <li><a href="#section-1-1">Autorización de incidencias</a></li>
+                </ul>
+            
+                <div class="content-holder">
+                    <div class="section" id="section-1-1">
+                        <div class="group">
+                            <button id="BtnInicio" class="ribbon-button" onclick="Inicio();">
+                                <span class="icon fa fa-list"></span>
+                            <span class="caption">Movimientos por autorizar</span>
+                            </button>
+                            <button style="width:80px;" id="BtnHistorico" class="ribbon-button" onclick="Historico();">
+                                <span class="icon fa fa-history"></span>
+                            <span class="caption">Histórico</span>
+                            </button>
+
+                            <span class="title">Incidencias nómina</span>
+                            </div>
+
+                        <div class="group">
+                            <button style="width:80px;" id="BtnAutorizar" class="ribbon-button" onclick="autorizaMovimientos();">
+                                <span class="icon fa fa-check-circle-o"></span>
+                            <span class="caption">Autorizar</span>
+                            </button>
+                            <button style="width:80px;" id="BtnRechazar" class="ribbon-button" onclick="rechazaMovimientos();">
+                                <span class="icon fa fa-close"></span>
+                            <span class="caption">Rechazar</span>
+                            </button>           
+                            <span class="title">Acciones movimientos nómina</span>
+                        </div>
+
+                        <div class="group">
+                            <button style="width:80px;" id="BtnCancelar" disabled="disabled" class="ribbon-button" onclick="Cancelar();">
+                                <span class="icon fa fa-times-circle-o"></span>
+                            <span class="caption">Cancelar</span>
+                            </button>
+                            <button style="width:80px;" id="BtnModificar" disabled="disabled" class="ribbon-button" onclick="Modificar();">
+                                <span class="icon fa fa-edit"></span>
+                            <span class="caption">Modificar</span>
+                            </button>          
+                            <span class="title">Acciones histórico</span>
+                        </div>
+
+                        <div class="group">
+                            <button disabled="disabled" style="width:80px;" id="BtnBuscar" class="ribbon-button" onclick="Buscar();">
+                                <span class="icon fa fa-search"></span>
+                            <span class="caption">Buscar</span>
+                            </button>
+                            <span class="title">Búsqueda</span>
+                        </div>
+            
+                        <div class="group">
+                            <button style="width:80px;" class="ribbon-button" onclick="DescargaExcel();">
+                                <span class="icon fa fa-file-excel-o"></span>
+                            <span class="caption">Excel</span>
+                            </button>
+                            
+                            <span class="title">Exportación</span>
+                        </div>
+
+                        <div class="group">
+                            <button class="ribbon-button" onclick="Refresca();">
+                                <span class="icon fa fa-refresh"></span>
+                            <span class="caption">Recargar</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>                
+            <div id="DivGrid"><div id="gdEmpleados" style="margin-top:1%"></div></div>
+        </div>
+    </div>
+    <!--Div Contenido--> 
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasBusqueda" aria-labelledby="offcanvasBusquedaLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasBusquedaLabel"><i class="fa fa-search consultamovsico"></i> Búsqueda</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button onclick="RegistraTab(1);" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Empleado</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button onclick="RegistraTab(2);" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Periodo</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button onclick="RegistraTab(3);" class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Tipo incidencia</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating">
+                                <input type="text" min="1" maxlength="100" class="form-control form-control-sm" id="empleado" placeholder="empleado">
+                                <label for="empleado"><span class="obligado">*</span> Empleado</label>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row">
+                        <div class="col">
+                            <span class="obligado">*</span>
+                            <label for="periodo">Periodo</label>
+                            <div id="periodo" class="hwdbo-combo"></div>
+                        </div>                      
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="row">
+                        <div class="col">
+                            <span class="obligado">*</span>
+                            <label for="tipoconcepto">Tipo concepto</label>
+                            <div id="tipoconcepto" class="hwdbo-combo"></div>
+                        </div>                      
+                    </div>
+                </div>
+              </div>                    
+            <div class="container">
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoBusqueda()"> Buscar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasCancelar" aria-labelledby="offcanvasCancelarLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasCancelarLabel"><i class="fa fa-close consultamovsico"></i> Cancelar <span id="spanMov"></span></h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="motivo">Motivo de cancelación</label>
+                        <div id="motivo" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%;">   
+                    <div class="col">
+                        <label for="observaciones" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                    </div>                   
+                </div>
+            </div>
+                    
+            <div class="container">
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoCancelar()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasIncidencias" aria-labelledby="offcanvasIncidenciasLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasIncidenciasLabel"><i class="fa fa-calendar-times-o consultamovsico"></i> Carga de incidencias</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="conceptoincidencia">Incidencia</label>
+                        <div id="conceptoincidencia" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="vigini">Fecha inicial kárdex</label>
+                        <div id="vigini" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="1" maxlength="3" class="form-control form-control-sm" id="dias" placeholder="dias">
+                            <label for="dias"><span class="obligado">*</span> Días</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%;">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="vigfin">Fecha final kárdex</label>
+                        <div id="vigfin" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idperiodo_inc">Periodo de cálculo</label>
+                        <div id="idperiodo_inc" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoIncidencias()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:65%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasIncapacidades" aria-labelledby="offcanvasIncapacidadesLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasIncapacidadesLabel"><i class="fa fa-heartbeat consultamovsico"></i> Carga de incapacidades</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input type="text" maxlength="15" class="form-control form-control-sm" id="folioInc" placeholder="folioInc">
+                            <label for="folioInc"><span class="obligado">*</span> Folio</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="incapacidad">Incapacidad</label>
+                        <div id="incapacidad" class="hwdbo-combo"></div>
+                    </div>  
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="tipoincapacidad">Tipo incapacidad</label>
+                        <div id="tipoincapacidad" class="hwdbo-combo"></div>
+                    </div>
+                   
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="tiporiesgo">Tipo de riesgo</label>
+                        <div id="tiporiesgo" class="hwdbo-combo"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="secuela">Consecuencia/Secuela</label>
+                        <div id="secuela" class="hwdbo-combo"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="control">Control</label>
+                        <div id="control" class="hwdbo-combo"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="fechainiincapacidad">Fecha inicio</label>
+                        <div id="fechainiincapacidad" class="hwdbo-calendario"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-floating">
+                            <input type="number" min="1" maxlength="3" class="form-control form-control-sm" id="diasInc" placeholder="diasInc">
+                            <label for="diasInc"><span class="obligado">*</span> Días</label>
+                        </div>
+                    </div> 
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="vigfinInc">Fecha final</label>
+                        <div id="vigfinInc" class="hwdbo-calendario"></div>
+                    </div>                    
+                </div>
+
+                <div class="row" style="margin-top:5%;">   
+                    <div class="col-sm-8">
+                        <label for="observacionesInc" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="observacionesInc" rows="3"></textarea>
+                    </div> 
+                    <div class="col-sm-4">
+                        <span class="obligado">*</span>
+                        <label for="fechacalculoInc">Fecha de cálculo</label>
+                        <div id="fechacalculoInc" class="hwdbo-calendario"></div>
+                    </div>                  
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoIncapacidades()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:35%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasConceptosEspeciales" aria-labelledby="offcanvasConceptosEspecialesLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasConceptosEspecialesLabel"><i class="fa fa-list consultamovsico"></i> Carga de conceptos especiales</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="overflow-y: hidden;">                    
+            <div class="container">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button id="Tab1" onclick="RegistraTab(1);" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Único periodo</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button id="Tab2" onclick="RegistraTab(2);" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Rango de periodos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button id="Tab3" onclick="RegistraTab(3);" class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Permanente</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div id="Tab1Cont" class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="concepto">Concepto</label>
+                                <div id="concepto" class="hwdbo-combo"></div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="number" min="0" maxlength="8" class="form-control form-control-sm" id="importeperiodounico" placeholder="importeperiodounico">
+                                    <label for="importeperiodounico"><span class="obligado">*</span> Importe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="periodoafectaunico">Periodo afectación único</label>
+                                <div id="periodoafectaunico" class="hwdbo-combo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Tab2Cont" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="conceptorango">Concepto</label>
+                                <div id="conceptorango" class="hwdbo-combo"></div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="number" min="0" maxlength="8" class="form-control form-control-sm" id="importerango" placeholder="importerango">
+                                    <label for="importerango"><span class="obligado">*</span> Importe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="periodoafectainicial">Periodo afectación inicial</label>
+                                <div id="periodoafectainicial" class="hwdbo-combo"></div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="number" min="0" maxlength="3" class="form-control form-control-sm" id="numeroperiodos" placeholder="numeroperiodos">
+                                    <label for="numeroperiodos"><span class="obligado">*</span> Número de periodos de afectación</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Tab3Cont" class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="conceptopermanente">Concepto</label>
+                                <div id="conceptopermanente" class="hwdbo-combo"></div>
+                            </div>                           
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="number" min="0" maxlength="8" class="form-control form-control-sm" id="importepermanente" placeholder="importepermanente">
+                                    <label for="importepermanente"><span class="obligado">*</span> Importe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <span class="obligado">* </span>
+                                <label for="periodoafectainicialpermanente">Periodo afectación inicial</label>
+                                <div id="periodoafectainicialpermanente" class="hwdbo-combo"></div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>  
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoConceptosEspeciales();"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasVacaciones" aria-labelledby="offcanvasVacacionesLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasVacacionesLabel"><i class="fa fa-calendar consultamovsico"></i> Carga de vacaciones</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="fechaingreso">Fecha de ingreso</label>
+                        <div id="fechaingreso" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="vacacion">Vacación</label>
+                        <div id="vacacion" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idperiodovacaciones">Periodo de cálculo</label>
+                        <div id="idperiodovacaciones" class="hwdbo-combo"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="fechainiciovacaciones">Fecha inicio</label>
+                        <div id="fechainiciovacaciones" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="1" maxlength="3" class="form-control form-control-sm" id="diasvacaciones" placeholder="diasvacaciones">
+                            <label for="diasvacaciones"><span class="obligado">*</span> Días</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="fechafinalvacaciones">Fecha final</label>
+                        <div id="fechafinalvacaciones" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="periodovacacional">Periodo vacacional</label>
+                        <div id="periodovacacional" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoVacaciones()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasHorasExtra" aria-labelledby="offcanvasHorasExtraLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasHorasExtraLabel"><i class="fa fa-clock-o consultamovsico"></i> Carga de horas extra</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="horasextra">Horas extra</label>
+                        <div id="horasextra" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="viginihorasextra">Fecha kárdex</label>
+                        <div id="viginihorasextra" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="1" maxlength="6" class="form-control form-control-sm" id="horashorasextra" placeholder="horashorasextra">
+                            <label for="horashorasextra"><span class="obligado">*</span> Horas</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%">
+                        <label style="margin-bottom:5%">Tratamiento decimales</label><br />
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnporcentual" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnporcentual">Porcentual</label>
+                          
+                            <input type="radio" class="btn-check" name="btnradio" id="btnminutos" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnminutos">Minutos</label>                         
+                        </div>
+                        <label id="lblRadioMinutos" style="margin-top:5%">Ejemplo: 0.50=30 min; 0.25=15 min</label>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idperiodo_he">Periodo de cálculo</label>
+                        <div id="idperiodo_he" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:11%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoHorasExtra()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div style="width:32%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasCreditos" aria-labelledby="offcanvasCreditosLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasCreditosLabel"><i class="fa fa-credit-card consultamovsico"></i> Créditos</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" maxlength="20" class="form-control form-control-sm" id="numerocredito" placeholder="numerocredito" disabled="disabled">
+                            <input id="txtCtrlNominaCredito" type="text" value="0" style="display:none">
+                            <label for="numerocredito" style="margin-top:-1.7%"><span class="obligado">*</span> Número de crédito</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="conceptocredito">Concepto</label>
+                        <div id="conceptocredito" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <label for="importetotalcredito"><span class="obligado">*</span> Importe total</label>
+                        <input type="number" min="0" maxlength="8" class="form-control form-control-sm hwdbo-numero" id="importetotalcredito" placeholder="importetotalcredito">                       
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="0" maxlength="4" class="form-control form-control-sm" id="nummeses" placeholder="nummeses" onkeyup="ObtenerPagos(this)" disabled="disabled">
+                            <label for="nummeses" style="margin-top:-1.7%"><span class="obligado">*</span> Número de meses</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="0" maxlength="8" class="form-control form-control-sm" id="numpagoscredito" placeholder="numpagoscredito" disabled="disabled">
+                            <label for="numpagoscredito" style="margin-top:-1.7%"><span class="obligado">*</span> No. de pagos</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <label for="montoperiodocredito"><span class="obligado">*</span> Monto por periodo</label>
+                        <input type="number" min="0" maxlength="8" class="form-control form-control-sm hwdbo-numero" id="montoperiodocredito" placeholder="montoperiodocredito" disabled="disabled">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" min="0" maxlength="8" class="form-control form-control-sm" id="frecuenciacredito" placeholder="frecuenciacredito" disabled="disabled">
+                            <label for="frecuenciacredito" style="margin-top:-1.7%"><span class="obligado">*</span> Frecuencia</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idperiodocredito">Periodo de cálculo</label>
+                        <div id="idperiodocredito" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:32%" class="offcanvas offcanvas-end fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasAmortizacionCredito" aria-labelledby="offcanvasAmortizacionCreditoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasAmortizacionCreditoLabel"><i class="fa fa-calculator consultamovsico"></i> Amortización</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <div id="DivAmortizaCredito"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoAmortizacionCredito()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js?V=1.0.0"></script>
+<script src="../System/js/hwdbo-AutorizaMovimientosNominaV2.js?V=2.0.1"></script>

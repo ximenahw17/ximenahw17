@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../../assets/movimientospersonalv3/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxcore.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />  
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../../assets/movimientospersonalv3/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/loader.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../../assets/movimientospersonalv3/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../../assets/movimientospersonalv3/js/jquery-confirm.min.js"></script>
+    <!-- Excel -->
+    <script src="../../assets/movimientospersonalv3/js/xlsx.core.min.js"></script>
+    <script src="../../assets/movimientospersonalv3/js/xlsx.full.min.js"></script>
+
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Título de la consulta</span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedor" style="border: none">
+            <div id="divContenedorInterno" style="border: none;">                
+                <div class="splitter-panel">
+                    <div class="container">
+                        <div class="form-row espacio">
+                            <div class="col-md-12">
+                                <div id="DivGrid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->   
+</body>
+</html>
+<!-- Jqxwidgets -->
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.filter.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.sort.js"></script>
+<!-- HW -->
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/JsEV.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-utilidades.js"></script>
+<!-- Local -->
+<script src="../../assets/movimientospersonalv3/js/hwdbo-PlantillaGrid.js"></script>

@@ -1,0 +1,393 @@
+﻿body
+{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-family: 'Trebuchet MS';
+}
+
+
+
+
+select:disabled
+{
+    background:#fff;
+}
+
+input:disabled
+{
+    background:#fff;
+}
+/*----------------------------------- T E X T O S -----------------------------------*/
+
+.Title_1 
+{  
+    font-family: Trebuchet MS; 
+    font-size: 20px; 
+    color:#000;
+    text-align:center;
+    font-weight: bold;
+    cursor: default; 
+}
+
+.Title_2 
+{  
+    font-family: Trebuchet MS; 
+    font-size: 18px;
+    color:#666;
+    text-align:left;
+    text-indent:10px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.Title_3 
+{  
+    font-family: Trebuchet MS;
+    font-size: 15px;
+    color:#333;
+    text-align:left;
+    text-indent:10px;
+    font-weight:bold;
+    font-style:italic;
+    cursor: default;
+}
+
+.Title_4 
+{
+    font-family: Trebuchet MS;
+    font-size: 15px;
+    color:#666;
+    text-align:left;
+    text-indent:10px;
+    font-weight:bold;
+    cursor: default;	
+}
+
+.Text_Normal 
+{  
+    font-family: Trebuchet MS; 
+    font-size: 12px;
+    color:#000;
+    margin-left:5px;
+    margin-right:5px;
+    margin-top:2px;
+    margin-bottom:2px;
+    text-align:justify;
+    cursor: default;
+}
+
+/*----------------------------------- T E X T O S -----------------------------------*/	
+
+
+/*---------------------------------- B O T O N E S ----------------------------------*/	
+
+.Button_Standard
+{
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #d1d1d1) );
+    background:-moz-linear-gradient( center top, #ffffff 5%, #d1d1d1 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d1d1d1');
+    background-color:#ffffff;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#777777;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px 10px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+	cursor:pointer;
+}
+.Button_Standard:hover 
+{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #ffffff) );
+    background:-moz-linear-gradient( center top, #d1d1d1 5%, #ffffff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#ffffff');
+    background-color:#d1d1d1;
+	cursor:pointer;
+}
+.Button_Standard:active 
+{
+    position:relative;
+    top:1px;
+	cursor:pointer;
+}
+
+/*---------------------------------- B O T O N E S ----------------------------------*/	
+
+/*-----------------------------------  I N P U T  -----------------------------------*/
+
+select
+{
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);	
+	}
+
+select:focus
+{
+	outline-color:#465397;
+}
+
+input[type="text"]
+{
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);
+    width:300px;	
+	}
+	
+	input[type="text"]:focus
+	{
+	outline-color:#465397;
+	}
+
+    input[type="number"]
+    {
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);	
+	}
+	
+	input[type="number"]:focus
+	{
+	outline-color:#465397;
+	}
+
+    input[type="date"]
+    {
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);	
+	}
+	
+	input[type="date"]:focus
+	{
+	outline-color:#465397;
+	}
+
+	input[type="password"]
+	{
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);	
+	background-color:rgba(255,255,255,0.7);
+	}
+	input[type="password"]:focus	
+	{
+	outline-color:#465397;
+	}
+	input[type="password"]:error
+	{
+	outline-color:#F00;
+	color:#900;
+}
+
+textarea
+{
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-color:#999;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);
+    font-family:Arial, Helvetica, sans-serif !important;
+	}
+	textarea:focus
+	{
+	outline-color:#465397;
+}
+
+.TextBox
+{
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);	
+	background-color:rgba(255,255,255,0.7);
+
+}
+	
+/*-----------------------------------  I N P U T  -----------------------------------*/
+
+/*-----------------------------------  T A B L A  -----------------------------------*/
+
+.Tabla
+{
+ 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	text-align: right;
+	border: 0px;
+	border-color:rgba(250,250,250,0.3);
+    border-spacing: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 2px;
+	border-top-left-radius: 2px;
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);	
+	background-color:rgba(255,255,255,0.7);
+	
+	}
+	
+	.Tabla th 
+	{
+	
+	background: #bfd255; /* Old browsers */
+	background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfd255), color-stop(50%,#8eb92a), color-stop(51%,#72aa00), color-stop(100%,#9ecb2d)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
+    text-decoration:none;
+    text-shadow:1px 1px 0px #666;
+	text-align:center;
+	text-padding: 2px;
+	font-size: 16px;
+	color: #FFFFFF;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #558FA6;
+	border-bottom-color: #558FA6;
+	font-family: “Trebuchet MS”, Arial;
+	
+	}
+	.Tabla tb
+	{
+	background-color:rgba(140,20,60,0.4);
+	
+	border:hidden;
+	}
+
+	.Tabla tr:nth-child(even) 
+	{ 
+	background: rgba(220,220,220,0.7)
+	}
+	.Tabla tr:nth-child(odd) 
+	{ 
+	background: rgba(255,255,255,0.7)
+	}
+	
+/*-------------------------------  C A L E N D A R  --------------------------------*/
+
+.Calendario 	
+	{  
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255,0.7);  
+    width: 200px; 
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;  
+    font-style:normal;  
+	} 
+	
+	/* para que no aparezcan rayitas */
+	.Calendario a 
+	{  
+    text-decoration: none;  
+	}
+
+	/* para el título */  
+	.Calendario .CalendarioTitulo 
+	{  
+    font-weight: bold; 
+    background-color: rgba(140,200,65,0.7);   
+	}  
+	
+.CalendarioG
+	{		
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255,0.7);  
+    width: 200px; 
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;  
+    font-style:normal; 
+	}
+	.CalendarioG a
+	{
+	text-decoration: none;
+	}
+	.CalendarioG .CalendarioGTitulo 
+	{  
+    font-weight: bold; 
+    background-color: rgba(140,200,65,0.7);   
+	}
+	.CalendarioG .NextPrevStyle
+	{
+		
+	}
+
+/*-------------------------------  C O M B O  B O X  --------------------------------*/
+.Combobox
+	{
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);	
+    width:300px;
+    height:22px;
+	}
+
+/*-------------------------------  C O M B O  B O X  --------------------------------*/
+/*--------------------------  C H E Q  B O X  L I S T  ------------------------------*/
+
+
+
+
+
+.Panel
+{
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-color:#999;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+	background-color:rgba(255,255,255,0.7);
+}
+
+
+
+
+
+
+
+

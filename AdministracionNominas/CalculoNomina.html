@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Custom -->
+    <link href="../System/css/custom.min.css" rel="stylesheet" />       
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />        
+    <script src="../System/Scripts/JsEV.js"></script>
+    <script src="../System/js/hwdbo-utilidades.js"></script> 
+    <script src="../System/js/hwdbo-CalculoNomina.js?v=1.1.6"></script>  
+    
+    
+    <style>
+        .espacio { margin-top: 5%; }
+
+        label { font-weight: 550; color:#383838 }
+
+        .obligado { color: red; }
+
+        .cardCalculo
+        {
+            background-color:#F1EFF1;
+            border-radius:2em;
+            border:none;
+            margin-top:1%;
+            height:65px;
+        }
+
+        .progress{
+            border-radius:2em;
+        }
+    </style>
+</head>
+<body>
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->
+
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-4">
+                    <span id="spanTitulo" style="margin-top:2%">Cálculo de nómina</span>
+                </div>
+                <div class="col-4" onclick="NuevoCalculo();">
+                    <i class="fa fa-plus-circle fa-2x" style="color:#4BAAD5;margin-top: 3.5%;margin-left:60%;cursor: pointer;"><span class="casita"> Nuevo cálculo</span></i>
+                </div>
+                <div class="col-4 class-inicio pull-right" data-modulo="AdministracionNominas">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 3.5%;margin-left:30%"><span class="casita"> Administración Nóminas</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88.5%;overflow-y: auto;" class="fluentContenedorInterno2">
+                <div class="accordion" id="accordionExample" style="border-radius:1.5em;">
+
+                </div>
+                
+                <!--
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button onclick="PintaDetalles(710)" style="height:125px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <div class="row" style="width:100%;margin-top: 2%;">
+                                <div class="col-sm-1">
+                                    <img src="../assets/images/iconos_web/engranes2.gif" style="width:140px;margin-right:2.5%" />
+                                </div>
+                                <div class="col-sm-2" style="font-size:small;margin-left:5%">
+                                    <dl>
+                                    <dt>Descripción:</dt><dd id="Descripcion_710">2021 Q15 1 Agosto</dd>
+                                    <dt>Estatus:</dt><dd id="Estatus_710">En ejecución</dd>
+                                    </dl>
+                                    <div class="progress" style="width: 450%;">
+                                        <div id="Barra_710" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"><label style="color:#fff" id="Numerito_710">100%</label></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" style="font-size:small;">
+                                    <dl>
+                                    <dt>Perfil calendario:</dt><dd id="Perfil_710">Perfil de Cálculo Nómina General</dd>
+                                    <dt>Periodo:</dt><dd id="Periodo_710">Quincena: 15/202101/08/2021 - 15/08/2021</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-2" style="font-size:small;">
+                                    <dl>
+                                    <dt>Inicio cálculo:</dt>
+                                    <dd id="FechaIni_710">2021-08-10T14:57:17.193</dd><dt>Fin cálculo:</dt>
+                                    <dd id="FechaFin_710">2021-08-10T14:59:14.75</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-2">
+                                    <h2><span class="badge bg-primary">Proceso 710</span></h2>
+                                </div>
+                                <div class="col-sm-1">
+                                    <img id="Imagen_710" src="../assets/images/iconos_web/checked2.gif" style="width: 60px;margin-top:10%;margin-right:50%">
+                                </div>
+                            </div>
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body" style="overflow-y: auto;">
+                          <div id="DivDetalleCard_710">
+                              <div class="container" style="height:450px"><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">1</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Inicialización de información</h6><div class="progress"><div id="Barra_1_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_1_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_1_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">2</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Inicialización de repositorios</h6><div class="progress"><div id="Barra_2_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_2_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_2_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">3</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de Días Reales</h6><div class="progress"><div id="Barra_3_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_3_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_3_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">4</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador</h6><div class="progress"><div id="Barra_4_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_4_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_4_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">5</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos personales</h6><div class="progress"><div id="Barra_5_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_5_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_5_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">6</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Integración de informados por importe</h6><div class="progress"><div id="Barra_6_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_6_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_6_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">7</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador informado</h6><div class="progress"><div id="Barra_7_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_7_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_7_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">8</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de movimientos por conceptos</h6><div class="progress"><div id="Barra_8_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_8_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_8_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">9</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos fijos</h6><div class="progress"><div id="Barra_9_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_9_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_9_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">10</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador de fórmula mixta</h6><div class="progress"><div id="Barra_10_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_10_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_10_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">11</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de salario diario integrado</h6><div class="progress"><div id="Barra_11_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_11_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_11_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">12</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de impuesto sobre la renta internacional</h6><div class="progress"><div id="Barra_12_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%"><label style="color:#fff" id="Numerito_12_710">0%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_12_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">13</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de líquidos de nómina</h6><div class="progress"><div id="Barra_13_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_13_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_13_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">14</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos de tope salarial</h6><div class="progress"><div id="Barra_14_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_14_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_14_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">15</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Determinación de diferencias</h6><div class="progress"><div id="Barra_15_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_15_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_15_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">16</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de pensión alimenticia (AT)</h6><div class="progress"><div id="Barra_16_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_16_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_16_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">17</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Integración de movimientos especiales</h6><div class="progress"><div id="Barra_17_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_17_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_17_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">18</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de Facturación</h6><div class="progress"><div id="Barra_18_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_18_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_18_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">19</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de líquidos de nómina</h6><div class="progress"><div id="Barra_19_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_19_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_19_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">20</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de totales de nómina</h6><div class="progress"><div id="Barra_20_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_20_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_20_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">21</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Concentrado de información</h6><div class="progress"><div id="Barra_21_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_21_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_21_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button style="height:125px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <img src="../assets/images/iconos_web/engranes2.gif" style="width:140px;margin-right:2.5%" />
+                            <div class="col-sm-2" style="font-size:small;">
+                                <dl>
+                                <dt>Descripción:</dt><dd id="Descripcion_710">2021 Q15 1 Agosto</dd>
+                                <dt>Estatus:</dt><dd id="Estatus_710">En ejecución</dd>
+                                </dl>
+                                <div class="progress" style="width: 450%;">
+                                    <div id="Barra_710" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"><label style="color:#fff" id="Numerito_710">100%</label></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3" style="font-size:small;">
+                                <dl>
+                                <dt>Perfil calendario:</dt><dd id="Perfil_710">Perfil de Cálculo Nómina General</dd>
+                                <dt>Periodo:</dt><dd id="Periodo_710">Quincena: 15/202101/08/2021 - 15/08/2021</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-2" style="font-size:small;">
+                                <dl>
+                                <dt>Inicio cálculo:</dt>
+                                <dd id="FechaIni_710">2021-08-10T14:57:17.193</dd><dt>Fin cálculo:</dt>
+                                <dd id="FechaFin_710">2021-08-10T14:59:14.75</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-2">
+                                <h2><span class="badge bg-primary">Proceso 710</span></h2>
+                            </div>
+                            <div class="col-sm-1">
+                                <img id="Imagen_710" src="../assets/images/iconos_web/checked2.gif" style="width: 60px;margin-top:10%;margin-right:50%">
+                            </div>
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body" style="overflow-y: auto;">
+                            <div id="DivDetalleCard_710">
+                                <div class="container" style="height:450px"><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">1</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Inicialización de información</h6><div class="progress"><div id="Barra_1_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_1_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_1_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">2</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Inicialización de repositorios</h6><div class="progress"><div id="Barra_2_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_2_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_2_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">3</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de Días Reales</h6><div class="progress"><div id="Barra_3_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_3_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_3_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">4</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador</h6><div class="progress"><div id="Barra_4_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_4_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_4_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">5</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos personales</h6><div class="progress"><div id="Barra_5_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_5_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_5_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">6</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Integración de informados por importe</h6><div class="progress"><div id="Barra_6_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_6_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_6_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">7</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador informado</h6><div class="progress"><div id="Barra_7_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_7_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_7_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">8</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de movimientos por conceptos</h6><div class="progress"><div id="Barra_8_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_8_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_8_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">9</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos fijos</h6><div class="progress"><div id="Barra_9_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_9_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_9_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">10</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de tabulador de fórmula mixta</h6><div class="progress"><div id="Barra_10_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_10_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_10_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">11</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de salario diario integrado</h6><div class="progress"><div id="Barra_11_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_11_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_11_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">12</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de impuesto sobre la renta internacional</h6><div class="progress"><div id="Barra_12_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%"><label style="color:#fff" id="Numerito_12_710">0%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_12_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">13</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de líquidos de nómina</h6><div class="progress"><div id="Barra_13_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_13_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_13_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">14</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de conceptos de tope salarial</h6><div class="progress"><div id="Barra_14_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_14_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_14_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">15</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Determinación de diferencias</h6><div class="progress"><div id="Barra_15_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_15_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_15_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">16</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de pensión alimenticia (AT)</h6><div class="progress"><div id="Barra_16_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_16_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_16_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">17</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Integración de movimientos especiales</h6><div class="progress"><div id="Barra_17_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_17_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_17_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">18</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de Facturación</h6><div class="progress"><div id="Barra_18_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_18_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_18_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">19</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de líquidos de nómina</h6><div class="progress"><div id="Barra_19_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_19_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_19_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">20</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Cálculo de totales de nómina</h6><div class="progress"><div id="Barra_20_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_20_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_20_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div><div class="card cardCalculo"><div class="card-body"><div class="col-sm-1" style="text-align:center;"><button style="margin-right:25%" class="btn btn-primary btn-sm">21</button><img src="../assets/images/iconos_web/engranes1.gif" style="width: 65%;margin-right:-55%"></div><div class="col-sm-8" style="margin-left:3.5%;width:73.3%"><h6 class="card-title"> Concentrado de información</h6><div class="progress"><div id="Barra_21_710" class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><label style="color:#fff" id="Numerito_21_710">100%</label></div></div></div><div class="col-sm-1" style="text-align:center"><img id="palomita_21_710" src="../assets/images/iconos_web/checked2.gif" style="width: 43%;margin-left:35%;margin-top:-4%"></div></div></div></div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button style="height:125px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <img src="../assets/images/iconos_web/engranes2.gif" style="width:140px;margin-right:2.5%" />
+                            <div class="col-sm-2" style="font-size:small;">
+                                <dl>
+                                <dt>Descripción:</dt><dd id="Descripcion_710">2021 Q15 1 Agosto</dd>
+                                <dt>Estatus:</dt><dd id="Estatus_710">En ejecución</dd>
+                                </dl>
+                                <div class="progress" style="width: 450%;">
+                                    <div id="Barra_710" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"><label style="color:#fff" id="Numerito_710">100%</label></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3" style="font-size:small;">
+                                <dl>
+                                <dt>Perfil calendario:</dt><dd id="Perfil_710">Perfil de Cálculo Nómina General</dd>
+                                <dt>Periodo:</dt><dd id="Periodo_710">Quincena: 15/202101/08/2021 - 15/08/2021</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-2" style="font-size:small;">
+                                <dl>
+                                <dt>Inicio cálculo:</dt>
+                                <dd id="FechaIni_710">2021-08-10T14:57:17.193</dd><dt>Fin cálculo:</dt>
+                                <dd id="FechaFin_710">2021-08-10T14:59:14.75</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-2">
+                                <h2><span class="badge bg-primary">Proceso 710</span></h2>
+                            </div>
+                            <div class="col-sm-1">
+                                <img id="Imagen_710" src="../assets/images/iconos_web/checked2.gif" style="width: 60px;margin-top:10%;margin-right:50%">
+                            </div>
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            -->
+        </div>
+    </div>
+    <!--Div Contenido-->
+	<!-- Modal -->  
+    <div style="width: 50%;height:89%;margin-top:4%;margin-left:25%;" class="offcanvas offcanvas-top fluentContenedorInterno" tabindex="-1" id="offcanvasCalculo" aria-labelledby="offcanvasCalculoLabel">
+        <div class="offcanvas-header">
+          <h4 class="offcanvas-title consultamovsico" id="offcanvasCalculoLabel"><i class="fa fa-calculator consultamovsico"></i> Cálculo de nómina</h4>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="overflow-y: hidden;">                  
+            <div class="row" style="margin-top:1%">
+                <div class="col-10 offset-1">
+                    <span class="obligado">*</span>
+                    <label for="grupoempresarial">Grupo empresarial</label>
+                    <div id="grupoempresarial" class="hwdbo-combo"></div>
+                </div>
+            </div>
+            <div class="row espacio">
+                <div class="col-10 offset-1">
+                    <span class="obligado">*</span>
+                    <label for="clasificacion">Clasificación nómina</label>
+                    <div id="clasificacion" class="hwdbo-combo"></div>
+                </div>
+            </div>
+            <div class="row espacio">
+                <div class="col-10 offset-1">
+                    <span class="obligado">*</span>
+                    <label for="periodicidad">Perfil calendario</label>
+                    <div id="periodicidad" class="hwdbo-combo ge"></div>
+                </div>
+            </div>
+            <div class="row espacio">
+                <div class="col-10 offset-1">
+                    <span class="obligado">*</span>
+                    <label for="perfil">Perfil cálculo</label>
+                    <div id="perfil" class="hwdbo-combo ge cl"></div>
+                </div>
+            </div>
+            <div class="row espacio">
+                <div class="col-10 offset-1">
+                    <span class="obligado">*</span>
+                    <label for="periodo">Periodo nómina</label>
+                    <div id="periodo" class="hwdbo-combo ge cl per"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10%;text-align:center;">
+                <div class="col">
+                    <button onclick="Enviar()" type="button" class="btn btn-primary btn-lg">Enviar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>    
+    <!-- // Modal -->   
+</body>
+</html>

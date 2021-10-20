@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" /> 
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+
+    <style>
+        .espacio {margin-top: 3%;}
+
+        span {position: relative;}
+
+        i {padding-right: 5px;}
+
+        .obligado {color: red;}
+
+        .modal-backdrop { display: none; }
+
+    </style>
+</head>
+<body>
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left">Consulta promociones</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="MenuPrincipal">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div> 
+            </div>           
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88.5%;overflow-y: auto;" class="fluentContenedorInterno2">
+            <div class="container-fluid">
+                <nav data-role="ribbonmenu">
+                    <ul class="tabs-holder">
+                        <li><a href="#section-1-1">Promociones</a></li>
+                    </ul>
+                
+                    <div class="content-holder">
+                        <div class="section" id="section-1-1">
+                            <div class="group">
+                                <button class="ribbon-button" onclick="CambioPuesto();">
+                                        <span class="icon fa fa-sitemap"></span>
+                                    <span class="caption">Cambio de puesto</span>
+                                </button>
+                                <button class="ribbon-button" onclick="CambioEsquema();">
+                                    <span class="icon fa fa-bank"></span>
+                                <span class="caption">Cambio de esquema de pago</span>
+                                </button>
+                                <button class="ribbon-button" onclick="CambioSueldo();">
+                                    <span class="icon fa fa-money"></span>
+                                <span class="caption">Cambio de sueldo</span>
+                                </button>
+                
+                                <span class="title">Incidencias nómina</span>
+                            </div>
+                
+                            <div class="group">
+                                <button class="ribbon-button" onclick="DescargaExcel();">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Excel</span>
+                                </button>
+                                <span class="title">Exportación</span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div id="DivGrid" style=" height: 100%;margin-top:1%"></div>
+            </div>
+        </div>
+    </div>
+    <!-- //Div Contenido -->
+    <!-- Modales -->
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasCambioPuesto" aria-labelledby="offcanvasCambioPuestoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasCambioPuestoLabel"><i class="fa fa-sitemap consultamovsico"></i> Cambio de puesto</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="iddivision">División</label>
+                        <div id="iddivision" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="iddepto">Departamento</label>
+                        <div id="iddepto" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idpuesto">Puesto</label>
+                        <div id="idpuesto" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%;">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="vigini">Vigencia Inicial</label>
+                        <div id="vigini" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%" id="switchsueldopuesto">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swsueldo">
+                            <label class="form-check-label" for="swsueldo">¿Cambio de sueldo?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%;" id="switchesquemapuesto">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swesquema">
+                            <label class="form-check-label" for="swesquema">¿Cambio esquema de pago?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoCambioPuesto()"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasCambioEsquema" aria-labelledby="offcanvasCambioEsquemaLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasCambioEsquemaLabel"><i class="fa fa-bank consultamovsico"></i> Cambio esquema de pago</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row" style="margin-top:1%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="nombramiento">Nombramiento</label>
+                        <div id="nombramiento" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="idsindicato">Esquema de pago</label>
+                        <div id="idsindicato" class="hwdbo-combo"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="viginisindicato">Vigencia inicial</label>
+                        <div id="viginisindicato" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%" id="switchpuestoesquema">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swcambiopuestoesquema">
+                            <label class="form-check-label" for="swcambiopuestoesquema">¿Cambio de puesto?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%;" id="swcambiosueldoesquemarow">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swcambiosueldoesquema">
+                            <label class="form-check-label" for="swcambiosueldoesquema">¿Cambio de sueldo?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoCambioEsquema();"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasCambioSueldo" aria-labelledby="offcanvasCambioSueldoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasCambioSueldoLabel"><i class="fa fa-money consultamovsico"></i> Cambio de sueldo</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="overflow-y: hidden;">                    
+            <div class="container">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button onclick="RegistraTab(1);" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Nuevo sueldo</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button onclick="RegistraTab(2);" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Porcentaje</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button onclick="RegistraTab(3);" class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Importe fijo</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input onkeyup="CalculaSD(this);" type="text" class="form-control form-control-sm" id="sueldomensual" placeholder="sueldomensual">
+                                    <label for="sueldomensual"><span class="obligado">*</span> Nuevo sueldo mensual</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-sm" id="salariodiario" placeholder="salariodiario" disabled="disabled">
+                                    <label for="salariodiario"><span class="obligado">*</span> Salario diario nuevo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-sm" id="porcentaje" placeholder="porcentaje">
+                                    <label for="porcentaje"><span class="obligado">*</span> Porcentaje de aumento</label>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="row" style="margin-top:1%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input onkeyup="CalculaIF(this);" type="text" class="form-control form-control-sm" id="importefijomensual" placeholder="importefijomensual">
+                                    <label for="importefijomensual"><span class="obligado">*</span> Importe fijo de aumento mensual</label>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="row" style="margin-top:10%">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-sm" id="importefijodiario" placeholder="importefijodiario" disabled="disabled">
+                                    <label for="importefijodiario"><span class="obligado">*</span> Importe fijo de aumento diario</label>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                  </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swsbc">
+                            <label class="form-check-label" for="swsbc">¿Modificar SBC?</label>
+                        </div>
+                    </div>
+                </div>  
+                <div class="row" style="margin-top:10%">
+                    <div class="col-5">
+                        <span class="obligado">*</span>
+                        <label for="vigininuevosueldo">Vigencia inicial</label>
+                        <div id="vigininuevosueldo" class="hwdbo-calendario"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:10%" id="swcambiopuestocambiosueldo">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swcambiopuestonuevosueldo">
+                            <label class="form-check-label" for="swcambiopuestonuevosueldo">¿Cambio de puesto?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10%;" id="swcambioesquemacambiosueldo">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="swesquemanuevosueldo">
+                            <label class="form-check-label" for="swesquemanuevosueldo">¿Cambio esquema de pago?</label>
+                        </div>
+                    </div>
+                </div>  
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoCambioSueldo();"> Aplicar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Modales-->
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-Promociones.js?v=1.0.8"></script>

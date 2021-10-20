@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/plugins/jqwidgets/jqx-all.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxcore.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxbuttons.js"></script>
+    <link href="../System/plugins/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../System/plugins/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />  
+    <link href="../System/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <style>
+        .espacio { margin-top: 3%; }
+        .obligado { color: red; }
+        label { font-weight: 550; }
+        .form-row { width: 99%; }
+    </style>
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-9">
+                    <span id="spanTitulo">Moneda</span>
+                </div>
+                <div class="col-3 class-inicio" data-modulo="CatalogosFuncionales">
+                    <!-- <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Catálogos Funcionales</span></i> -->
+                    <i class="fa fa-bars" style="color:#4BAAD5;margin-top: 4%;"><span class="casita"> Catálogos Funcionales</span></i>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="divContenedor" style="border: none" class="fluentContenedorInterno"> -->
+            <div id="divContenedorInterno" style="border: none;height:91%" class="fluentContenedorInterno2">                
+                <div class="splitter-panel">                    
+                    <div id="jqxtabs" style="margin:0.1px;border:none">
+                        <ul>
+                            <li>Consulta</li>
+                            <li></li>
+                        </ul>
+                        <div>
+                            <div class="form-row">
+                                <div class="col-md-12" id="DivGrid"></div>
+                            </div>
+                        </div>
+                        <div id="DivCampos" class="container">
+                            <div class="form-row" style="margin-top:3%">
+                                <input type="text" id="idmoneda" class="hwdbo-texto" value="0" style="display:none" />
+                                <div class="col-md-2 offset-3">
+                                    <span class="obligado">* </span>
+                                    <label for="clavemoneda">Clave moneda</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm hwdbo-texto aweb0"
+                                            id="clavemoneda"
+                                            maxlength="4"
+                                    />
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="obligado">* </span>
+                                    <label for="descripcion">Descripción moneda</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm hwdbo-texto aweb0"
+                                            id="descripcion"
+                                            maxlength="999"
+                                    />
+                                </div>                      
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-6 offset-3">
+                                    <span class="obligado">* </span>
+                                    <label for="idpais">País moneda</label>
+                                    <div id="idpais" class="hwdbo-combo aweb0"></div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top:4%">
+                                <div class="col-md-12">
+                                    <center><button id="BtnGuardar" class="hwdbo-boton" data-contenido="DivCampos" onclick="validaCampos(this);"><i class="fa fa-save"></i> Guardar</button></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+    <!--Div Contenido-->
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->   
+</body>
+</html>
+<!-- Jqxwidgets -->
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<!-- HW -->
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<!-- Local -->
+<script src="../System/js/hwdbo-Moneda.js"></script>

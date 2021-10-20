@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom -->
+    <link href="../System/css/custom.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" /> 
+    <link href="../System/Styles/loader.css" rel="stylesheet" />   
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />     
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../System/Scripts/JsEV.js"></script>
+    <script src="../System/js/hwdbo-utilidades.js"></script>
+    <script src="../System/js/hwdbo-MenuMovimientosPersonal.js?v=1.0.0"></script>  
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+    <script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+    <script src="../System/js/jqxgrid.filter.js"></script>
+    <script src="../System/js/jqxgrid.sort.js"></script>
+    <style>
+        .centrado {
+            margin-top: 7%;
+            text-align: center;
+        }
+        .espacio { margin-top: 5%; }
+        .offset-1 { margin-left: 4.333333%; }
+        .enter{margin-top: 1%;}
+        .col-lg-3 {width: 27%;}
+        table{width:100%;margin-top:-2%;}
+        .collapse-link{ cursor: pointer;}
+        .card-option{cursor:pointer}
+    </style>
+</head>
+<body>
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo" >
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo"><i class="fa fa-home" style="color:#707070"></i> Home</span>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border:none;height:88%;overflow-y: auto;overflow-x: hidden;" class="fluentContenedorInterno2">
+            <div class="container" style="margin:0.3%">
+                <div class="col-lg-3 offset-1">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="/EnterpriseInformation/enterpriseinformation.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/rs-ico.png" /></a></td>
+                                        <td style="text-align: center;"><a href="/EnterpriseInformation/enterpriseinformation.html"><center><h2 style="font-size:1.4em;" title="Información empresarial" class="consultamovsico">Información empresarial</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p style="text-align:left">Catálogos de información empresarial</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="/EnterpriseInformation/enterpriseinformation.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">                                       
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;" onclick="NuevoIngreso();"><img src="../assets/images/iconos_web/nuevoMovimiento.png" style="height: 80px;width: 80px;" /></td>
+                                        <td style="text-align: center;" onclick="NuevoIngreso();"><center><h2 style="font-size:1.4em;margin:auto;text-align: center;" class="consultamovsico" title="Nuevo movimiento">Nuevo movimiento</h2></center></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">                                                                               
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">B&uacute;squeda con clave &uacute;nica de persona para nuevo movimiento.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a onclick="NuevoIngreso();" class="btn btn-sm btn-primary consultamovs">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="GestionPersonalTemporal.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/personalTemporal.png" /></a></td>
+                                        <td style="text-align: center;"><a href="GestionPersonalTemporal.html"><center><h2 style="font-size:1.4em;" title="Personal temporal" class="consultamovsico">Personal temporal</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p style="text-align:left">Consulta y gestión de los empleados temporales.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="GestionPersonalTemporal.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="AutorizaMovimientosNominaV2.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/autorizaMovimientosNomina.png" /></a></td>
+                                        <td style="text-align: center;"><a href="AutorizaMovimientosNominaV2.html"><center><h2 style="font-size:1.4em;text-align: center;" title="Autoriza movimientos nómina" class="consultamovsico">Autoriza<br>movimientos nómina</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Incidencias, incapacidades, vacaciones, horas extra</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="AutorizaMovimientosNomina.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">                               
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table>
+                                    <tr>
+                                        <td style="width: 80px;"><a href="/AdministracionNominas/ConsultaEmpleadoNomina.html"><img src="../assets/images/iconos_web/ConsultasNomina.png" style="width: 80px; height: 80px;" /></a></td>
+                                        <td style="text-align: center;"><a href="/AdministracionNominas/ConsultaEmpleadoNomina.html"><center><h2 style="font-size:1.4em;margin:auto;text-align: center;" class="consultamovsico" title="Consultas de nómina">Consultas de nómina</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12"><p style="text-align:left">Consultas de nómina</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="/AdministracionNominas/ConsultaEmpleadoNomina.html"> Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>                               
+                    </div>                        
+                </div>
+                <div class="col-lg-3 offset-1">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="/CatalogosFuncionales/CatalogosFuncionales.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/sm-ico.png" /></a></td>
+                                        <td style="text-align: center;"><a href="/CatalogosFuncionales/CatalogosFuncionales.html"><center><h2 style="font-size:1.4em;" title="Catálogos funcionales" class="consultamovsico">Catálogos funcionales</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p style="text-align:left">Catálogos funcionales</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="/CatalogosFuncionales/CatalogosFuncionales.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="ConsultaMovimientos.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/consultarMovimiento.png" /></a></td>
+                                        <td style="text-align: center;"><a href="ConsultaMovimientos.html"><center><h2 style="font-size:1.4em;" title="Consulta movimientos" class="consultamovsico">Consulta de plantilla</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Consulte todos los movimientos realizados de sus empleados.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="ConsultaMovimientos.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="Promociones.html"><img style="height: 79px;width: 79px;" src="../assets/images/iconos_web/promociones.png" /></a></td>
+                                        <td style="text-align: center;"><a href="Promociones.html"><center><h2 style="font-size:1.4em;" title="Promociones" class="consultamovsico">Promociones</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Gestione las promociones / cambios de sueldo de sus empleados.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="Promociones.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="CargaMasivaMovimientos.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/cargaMasiva.png" /></a></td>
+                                        <td style="text-align: center;"><a href="CargaMasivaMovimientos.html"><center><h2 style="font-size:1.4em;" title="Carga masiva movimientos" class="consultamovsico">Carga masiva de<br/>movimientos</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Carga masiva de movimientos.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="CargaMasivaMovimientos.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="ReportesNomina.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/reportesNomina.png" /></a></td>
+                                        <td style="text-align: center;"><a href="ReportesNomina.html"><center><h2 style="font-size:1.4em;" title="Reportes nómina" class="consultamovsico">Reportes nómina</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Reportes de nómina</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="ReportesNomina.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-1">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="/AdministracionNominas/AdministracionNominas.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/ConsultasNomina.png" /></a></td>
+                                        <td style="text-align: center;"><a href="/AdministracionNominas/AdministracionNominas.html"><center><h2 style="font-size:1.4em;" title="Administración de nóminas" class="consultamovsico">Administración de nóminas</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p style="text-align:left">Administración de nóminas</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="/AdministracionNominas/AdministracionNominas.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="AutorizaMovimientosEmpleado.html?estatus=1"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/movimientosAfectar.png" /></a></td>
+                                        <td style="text-align: center;"><a href="AutorizaMovimientosEmpleado.html?estatus=1"><center><h2 style="font-size:1.4em;" title="Movimientos por afectar" class="consultamovsico">Movimientos por afectar</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Movimientos pendientes por afectar/autorizar.</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="AutorizaMovimientosEmpleado.html?estatus=1">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="MovimientosNominaV2.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/MovimientosNomina.png" /></a></td>
+                                        <td style="text-align: center;"><a href="MovimientosNominaV2.html"><center><h2 style="font-size:1.4em;" title="Movimientos nómina" class="consultamovsico">Movimientos nómina</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Incidencias, incapacidades, vacaciones, horas extra</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="MovimientosNominaV2.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 espacio">
+                        <div class="x_panel consultamovspanel" style="height: auto;">
+                            <div class="x_title">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width: 80px;"><a href="Finiquitos.html"><img style="height: 80px;width: 80px;" src="../assets/images/iconos_web/Finiquito.png" /></a></td>
+                                        <td style="text-align: center;"><a href="Finiquitos.html"><center><h2 style="font-size:1.4em;" title="Finiquitos" class="consultamovsico">Finiquitos</h2></center></a></td>
+                                        <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content consultamovstitle" style="display: none;">
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><p class="consultamovstarjetas" style="text-align:left">Finiquitos empleados</p></div>
+                                </div>
+                                <div class="row enter">
+                                    <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="Finiquitos.html">Ingresar</a></center></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                 
+            </div>               
+        </div>               
+    </div>   
+    <!--Div Contenido-->
+    <div style="width: 70%;height:89%;margin-top:2%;margin-left:15%;" class="offcanvas offcanvas-top fluentContenedorInterno" tabindex="-1" id="offcanvasNuevoIngreso" aria-labelledby="offcanvasNuevoIngresoLabel">
+        <div class="offcanvas-header">
+          <h4 class="offcanvas-title consultamovsico" id="offcanvasNuevoIngresoLabel"><i class="fa fa-plus-circle consultamovsico"></i> Nuevo ingreso</h4>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="overflow-y: auto;">                  
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 offset-2">
+                        <b>Razón social:</b> <div id="SelRazonSocial"></div>
+                    </div>
+                </div>
+                <div id="DivBusqueda" class="row" style="display:none;margin-top:4%">
+                    <div class="col-md-8 offset-2">
+                        <input type="text" class="form-control form-control-sm" id="txtCUP" maxlength="18" placeholder="Ingrese CURP..." onkeyup="validaCURP(this);" />
+                    </div>
+                    <div class="col-md-3 offset-5">
+                        <button id='jqxBtnBuscar' class="btn btn-primary consultamovs" disabled="disabled" style="margin-top:16%;width:50%;">Buscar</button>
+                    </div>
+                </div>
+                <div id="DivTarjetas" style="margin-left:1%;margin-top: 4%;">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-md-12 col-sm-12 card-option" id="cardAltaEmpleado" data-estatus="1">                               
+                                <div class="x_panel consultamovs" style="height: auto;background-color: #fff;">
+                                    <div class="x_title">
+                                        <table>
+                                            <tr>
+                                                <td><h2 style="font-size: 1.4em;" class="consultamovsico"><img src="../assets/images/iconos_web/nm-ico.png" style="width: 70px; height: 70px;" /> Alta</h2></td>
+                                            </tr>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+                            <div style="margin-top:1%" class="col-md-12 col-sm-12 card-option" id="cardReingresoEmpleado" data-estatus="2">                               
+                                <div class="x_panel consultamovspanel" style="height: auto;background-color: #fff;">
+                                    <div class="x_title">
+                                        <table>
+                                            <tr>
+                                                <td><h2 style="font-size: 1.4em;" class="consultamovsico"><img src="../assets/images/iconos_web/ma-ico.png" style="width: 70px; height: 70px;" /> Reingreso</h2></td>
+                                            </tr>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+                            <div class="col-md-12 col-sm-12 card-option" id="cardModificaEmpleado" data-estatus="3">                               
+                                <div class="x_panel consultamovspanel" style="height: auto;background-color: #fff;">
+                                    <div class="x_title">
+                                        <table>
+                                            <tr>
+                                                <td><h2 style="font-size: 1.4em;" class="consultamovsico"><img src="../assets/images/iconos_web/ma-ico.png" style="width: 70px; height: 70px;" /> Modificación</h2></td>
+                                            </tr>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-md-12 col-sm-12 card-option" id="cardAltaRazonSocial" data-estatus="6">                               
+                                <div class="x_panel consultamovspanel" style="height: auto;background-color: #fff;">
+                                    <div class="x_title">
+                                        <table>
+                                            <tr>
+                                                <td><h2 style="font-size: 1.4em;" class="consultamovsico"><img src="../assets/images/iconos_web/bitacora-ico.png" style="width: 70px; height: 70px;" /> Alta otro empleador</h2></td>
+                                            </tr>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-md-12 col-sm-12 card-option" id="cardBajaEmpleado" data-estatus="5">                               
+                                <div class="x_panel consultamovspanel" style="height: auto;background-color: #fff;">
+                                    <div class="x_title">
+                                        <table>
+                                            <tr>
+                                                <td><h2 style="font-size: 1.4em;" class="consultamovsico"><img src="../assets/images/iconos_web/ma-ico.png" style="width: 70px; height: 70px;" /> Baja</h2></td>
+                                            </tr>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="DivInfo" style="margin-top:4%;overflow-y: auto;"></div>
+
+
+            </div>
+
+        </div>
+    </div>    
+</body>
+</html>

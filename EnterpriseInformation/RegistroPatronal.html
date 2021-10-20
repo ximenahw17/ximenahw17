@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/plugins/jqwidgets/jqx-all.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxcore.js"></script>
+    <script src="../System/plugins/jqwidgets/jqxbuttons.js"></script>
+    <link href="../System/plugins/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />  
+    <link href="../System/plugins/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />  
+    <link href="../System/plugins/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <link href="../System/plugins/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" />
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+    <style>
+        .espacio {
+            margin-top: 2%;
+        }
+        .obligado {
+            color: red;
+        }
+        label {font-weight: 550;}
+        .form-row{width: 99%;}
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+</style>
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-9">
+                    <span id="spanTitulo">Registro Patronal</span>
+                </div>
+                <div class="col-3 class-inicio" data-modulo="enterpriseinformation">
+                    <!-- <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Información Empresarial</span></i> -->
+                    <i class="fa fa-bars" style="color:#4BAAD5;margin-top: 4%;"><span class="casita"> Información Empresarial</span></i>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="divContenedor" style="border: none" class="fluentContenedorInterno"> -->
+            <div id="divContenedorInterno" style="border: none;height:91%" class="fluentContenedorInterno2">                
+                <div class="splitter-panel">                    
+                    <div id="jqxtabs" style="margin:0.1px;border:none">
+                        <ul>
+                            <li>Consulta</li>
+                            <li></li>
+                        </ul>
+                        <div>
+                            <div class="form-row">
+                                <div class="col-md-12" id="DivGrid"></div>
+                            </div>
+                        </div>
+                        <div id="DivCampos" class="container">
+                            <div class="form-row espacio">
+                                <input type="text" id="idregistropatronal" class="hwdbo-texto" value="0" style="display:none" />
+                                <div class="col-md-6">
+                                    <span class="obligado">* </span>
+                                    <label for="idrazonsocial">Razón social</label>
+                                    <div id="idrazonsocial" class="hwdbo-combo aweb0"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="numeroregistropatronal">Número registro patronal</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm hwdbo-texto aweb0"
+                                            id="numeroregistropatronal"
+                                            maxlength="11"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="actividadeconomica">Actividad económica</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm hwdbo-texto aweb0"
+                                            id="actividadeconomica"
+                                            maxlength="100"
+                                    />
+                                </div>                      
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <label for="calle">Calle</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm  hwdbo-texto"
+                                            id="calle"
+                                            maxlength="100" />
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="numeroexterior">Num ext</label>
+                                            <input type="text"
+                                                    class="form-control form-control-sm  hwdbo-texto"
+                                                    id="numeroexterior"
+                                                    maxlength="25" 
+                                            />   
+                                        </div>
+                                        <div class="col-md-6" style="margin-left:-4%">
+                                            <label for="numerointerior">Num int</label>
+                                            <input type="text"
+                                                    class="form-control form-control-sm  hwdbo-texto"
+                                                    id="numerointerior"
+                                                    maxlength="25"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="idpais">País</label>
+                                    <div id="idpais" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="codigopostal">Código postal</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm  hwdbo-texto"
+                                            id="codigopostal"
+                                            maxlength="5" />
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <label for="identidad">Entidad</label>
+                                    <div id="identidad" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="idmunicipio">Municipio</label>
+                                    <div id="idmunicipio" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="colonia">Colonia</label>
+                                    <div id="colonia" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="idzonaeconomica">Área geográfica</label>
+                                    <div id="idzonaeconomica" class="hwdbo-combo"></div>
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <label for="ladatelefono1">Clave del país</label>
+                                    <div id="ladatelefono1" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="telefono1">Teléfono</label>
+                                    <input type="text"
+                                            class="form-control form-control-sm  hwdbo-texto"
+                                            id="telefono1"
+                                            maxlength="15" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="idclavedelegacionimss">Delegación IMSS</label>
+                                    <div id="idclavedelegacionimss" class="hwdbo-combo"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="idclavesubdelegacionimss">Subdelegación IMSS</label>
+                                    <div id="idclavesubdelegacionimss" class="hwdbo-combo"></div>
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="idclaseprt">Clase</label>
+                                    <div id="idclaseprt" class="hwdbo-combo aweb0"></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <span class="obligado">* </span>
+                                    <label for="idfraccionprt">Fracción</label>
+                                    <div id="idfraccionprt" class="hwdbo-combo aweb0"></div>
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="styps">STyPS (Dictamina)</label>
+                                    <div id="styps" class="hwdbo-switch aweb0"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="porcentajeprimariesgo">Prima riesgo de trabajo</label>
+                                    <input type="text"
+                                    class="form-control form-control-sm  hwdbo-numero aweb0"
+                                    id="porcentajeprimariesgo"
+                                    maxlength="7" 
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="nombrerepresentantelegal">Nombre representante legal</label>
+                                    <input type="text"
+                                    class="form-control form-control-sm  hwdbo-texto"
+                                    id="nombrerepresentantelegal"
+                                    maxlength="150" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="apellido1representantelegal">Apellido paterno representante</label>
+                                    <input type="text"
+                                    class="form-control form-control-sm  hwdbo-texto"
+                                    id="apellido1representantelegal"
+                                    maxlength="150" />
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-3">
+                                    <label for="apellido2representantelegal">Apellido materno representante</label>
+                                    <input type="text"
+                                    class="form-control form-control-sm  hwdbo-texto"
+                                    id="apellido2representantelegal"
+                                    maxlength="150" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="curprepresentantelegal">CURP representante legal</label>
+                                    <input type="text"
+                                    class="form-control form-control-sm  hwdbo-texto"
+                                    id="curprepresentantelegal"
+                                    maxlength="18" />
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="obligado">* </span>
+                                    <label for="vigenciainicial">Vigencia incial</label>
+                                    <div id="vigenciainicial" class="hwdbo-calendario aweb0"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="vigenciafinal">Vigencia final</label>
+                                    <div id="vigenciafinal" class="hwdbo-calendario"></div>
+                                </div>
+                            </div>
+                            <div class="form-row espacio">
+                                <div class="col-md-12">
+                                    <center><button id="BtnGuardar" class="hwdbo-boton" data-contenido="DivCampos" onclick="validaCampos(this);"><i class="fa fa-save"></i> Guardar</button></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+    <!--Div Contenido-->
+    <!-- CARGADOR -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <!-- / CARGADOR -->   
+</body>
+</html>
+<!-- Jqxwidgets -->
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<!-- HW -->
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<!-- Local -->
+<script src="../System/js/hwdbo-RegistroPatronal.js"></script>

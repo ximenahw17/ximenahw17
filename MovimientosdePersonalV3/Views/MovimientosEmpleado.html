@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Movimientos de personal v3</title>
+    <!-- Font Awesome -->
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/font-awesome.min.css" rel="stylesheet" />
+    <script src="../../assets/movimientospersonalv3/jquery-3.1.0.min.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.energyblue.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../assets/movimientospersonalv3/System_V7/Scripts/bootstrap.bundle.min.js"></script>
+    <link href="../../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../../assets/movimientospersonalv3/System_V7/Styles/loader.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../../assets/movimientospersonalv3/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../../assets/movimientospersonalv3/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../../assets/css/fluent.css" rel="stylesheet" />
+
+    <style>
+        .espacio {
+            margin-top: 3%;
+            /*margin-bottom: 2%;*/
+        }
+
+        span {
+            position: relative;
+            /*font-weight: bold;*/
+        }
+
+        i {
+            padding-right: 5px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        .jqx-rc-all {
+            border-radius: 0px;
+        }
+
+        .modal.right_modal{
+            position: fixed;
+            z-index: 99999;
+        }
+
+        .modal.right .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 35%;
+            height: 100%;
+            right: 0;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+        .modal.right .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .modal.right .modal-body {
+            padding: 15px 15px 80px;
+        }
+      
+        /*Right*/
+        .modal.right.fade .modal-dialog {
+            right: -320px;
+            -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+        }
+
+        .modal.right.fade.show .modal-dialog {
+            right: 0;
+        }
+
+        .modal-backdrop {
+            display: none;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>
+    <div id="cargaPagina2" class='loader__wrapper' style="display:none">
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='number__wrapper'>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+            <div class='number'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>    
+    <!-- //Div Cargador -->
+    <!-- Div Contenido -->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left"></span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-bars" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedor" style="border: none" class="fluentContenedorInterno">
+            <div id="divContenedorInterno" style="border: none;height:99%" class="fluentContenedorInterno">                
+                <div id="gdEmpleados"></div>
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+	<!-- Modal -->
+	<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content fluentContenedorInterno">
+
+				<div class="modal-header">					
+					<h4 class="modal-title" id="myModalLabel2"><i class="fa fa-info-circle"></i> Detalle movimiento</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+
+				<div class="modal-body">
+                    <dl>
+                        <dt>Id_Movimiento</dt>
+                        <dd><label id="lblIdMov"></label></dd>
+                    </dl>                    
+					<p id="resumen">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempor ac orci quis feugiat. Cras varius mauris sagittis, bibendum lectus vitae, convallis elit. Fusce odio erat, euismod ac magna finibus, tristique dictum tellus. Fusce ut pellentesque quam, ac lacinia elit. Morbi pellentesque aliquam purus, in bibendum elit viverra dapibus. Mauris placerat sem ligula, nec molestie sem accumsan a. Aliquam fringilla nisl eros. Integer nec nisi interdum, imperdiet velit non, vulputate turpis.</p>
+				</div>
+
+			</div><!-- modal-content -->
+		</div><!-- modal-dialog -->
+	</div><!-- modal -->    
+
+</body>
+</html>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.filter.js"></script>
+<script src="../../assets/movimientospersonalv3/js/jqxgrid.sort.js"></script>
+<script src="../../assets/movimientospersonalv3/System_V7/Scripts/JsEV.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-utilidades.js"></script>
+<script src="../../assets/movimientospersonalv3/js/hwdbo-MovimientosEmpleado.js"></script>

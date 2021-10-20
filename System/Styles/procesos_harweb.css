@@ -1,0 +1,446 @@
+﻿/*--------------------------------------------------*/
+/*                                                  */
+/*ÁREA DE TRABAJO			            			*/
+/*                                                  */
+/*--------------------------------------------------*/
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #898989!important;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* DIV WRAPPER */
+
+#divContenedor {
+  position: absolute;
+  top: 75px;
+  left: 5px;
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: -moz-calc(100% - 10px);
+  height: calc(100% - 10px);
+  background: #898989;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#divContenedorInterno
+{
+  position: absolute;
+  top: 75px;
+  left: 5px;
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: -moz-calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+
+/* DIV CUERPO */
+
+#divContenido {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: -moz-calc(100% - 5px);
+  height: calc(100% - 5px);
+}
+
+/* DIV AYUDA */
+
+#divDescripcion {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: -moz-calc(100% - 4px);
+  width: calc(100% - 4px);
+  height: -moz-calc(100% - 4px);
+  height: calc(100% - 4px);
+  text-align: justify;
+  vertical-align: middle;
+  overflow: auto;
+  display: table;
+}
+
+#spanDescripcion {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 16px;
+  font-family: "Trebuchet MS";
+}
+
+/* DIV TÍTULO */
+
+#divTitulo {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: 60px;
+  background: #F0F0F0;
+  text-align: justify;
+  overflow: hidden;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#spanTitulo {
+  display: inline-block;
+  overflow: hidden;
+  font-size: 22px;
+  margin-top:0.5%;
+  font-family: "Trebuchet MS";
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 40px;
+  vertical-align: middle;
+  padding-left: 1%;
+  width: 100%;
+  color:#707070;
+  /* text-shadow: 5px 5px rgb(231, 229, 229); */
+}
+
+.splitter-panel {
+  background: #ffffff;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  border-color: #e5e9ec;
+  border-style: solid;
+  border-width: 1px;
+
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: -moz-calc(100% - 50px);
+  height: calc(100% - 50px);
+}
+
+i {
+  color: #353C46;
+}
+
+/*--------------------------------------------------*/
+/*                                                  */
+/*MENSAJE WAIT			            				*/
+/*                                                  */
+/*--------------------------------------------------*/
+
+#cargaPaginaOld {
+  background-color: #e0e9f5;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 185000;
+  display: none;
+}
+
+
+.carga {
+  width: 300px;
+  margin: 300px auto;
+  height: 300px;
+  margin-top:15%;
+}
+
+.circulo {
+  border-radius: 100%;
+  border-top: 5px solid #455495;
+  margin: auto;
+  transform-origin: 50%;
+  position: relative;
+}
+
+.s_3 {
+  width: 200px;
+  height: 200px;
+  animation: rot_right 2s infinite linear;
+  -webkit-animation: rot_right 2s infinite linear;
+  transition: 2s;
+  -webkit-transition: 2s;
+}
+
+.s_2 {
+  width: 160px;
+  height: 160px;
+  margin-top: 10px;
+  animation: rot_left 2s infinite linear;
+  -webkit-animation: rot_left 2s infinite linear;
+  transition: 2s;
+  -webkit-transition: 2s;
+  margin-top: -190px;
+}
+
+.s_1 {
+  width: 115px;
+  height: 115px;
+  margin-top: 10px;
+  animation: rot_right 3s infinite linear;
+  -webkit-animation: rot_right 3s infinite linear;
+  transition: 3s;
+  -webkit-transition: 3s;
+  margin-top: -140px;
+}
+
+@keyframes rot_right {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rot_right {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rot_left {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rot_left {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.s_titulo {
+  border: 0;
+  color: rgb(83, 78, 78);
+  font-family: arial;
+  text-align: center;
+  margin-top: -60px;
+  animation: blink 2s infinite linear;
+  -webkit-animation: blink 2s infinite linear;
+  transition: 2s;
+  -webkit-transition: 2s;
+  letter-spacing: 1px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#jqxtabs,
+#divTabsNuevo,
+#divTabsLaborales,
+#divDatosGeneralesLaborales {
+  background: #ffffff;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  -webkit-border-bottom-left-radius: px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+
+.class-inicio {
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  
+.class-regresar {
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.class-inicio:active {
+  
+  transform: translateY(4px);
+}
+  
+  .class-regresar:active {
+  
+  transform: translateY(4px);
+}
+
+/*.fluentContenedorInterno
+{
+  background-color: #F0F0F0!important;
+}*/
+
+.btn{
+  border-radius: 3em;
+}
+
+.casita{
+  font-family: 'Trebuchet MS';
+  font-size: 22px;
+  color:#707070;
+  margin-top:1%
+}
+
+.x_title h2 {
+  margin: 5px 0 6px;
+  float: none;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bitacora,.bitacora:focus,.bitacora:active{ color:#0000b3;border-color:#0000b3;background-color:#0000b3;}
+.bitacora:hover{background-color:#fff;border-color:#0000FF;color:#0000b3}
+.bitacoraico{color:#0000b3}
+.bitacorapanel{border:1px solid #0000b3!important}
+.bitacoratitle{border-top:2px solid #0000b3!important}
+
+.consultamovs,.consultamovs:focus,.consultamovs:active{ background-color:#1ca8dd;border-color:#1ca8dd }
+.consultamovs:hover{ color:#1ca8dd;border-color:#1ca8dd; background-color: #fff; }
+.consultamovsletra{ color:#4BAAD5 }
+.consultamovsico{ color:#707070!important }
+.consultamovspanel{border:2px solid #ffffff!important}
+.consultamovstitle{border-top:2px solid #4BAAD5!important}
+.consultamovstarjetas{color:#737373}
+
+.bajas {color:#dc3545;border-color:#dc3545;background-color:#dc3545;}
+.bajas:hover {color:#dc3545;border-color:#dc3545; background-color: #fff;}
+.bajasico {color:#dc3545}
+.bajaspanel{border:1px solid #dc3545!important}
+.bajastitle{border-top:2px solid #dc3545!important}
+.bajasbutton{color:#dc3545;border:1px solid #dc3545!important;background-color: #fff;}
+.bajasbutton:hover{background-color: #dc3545;color:#fff}
+
+.altas {color:#fd7e14;border-color:#fd7e14;background-color:#fd7e14;}
+.altas:hover {color:#fd7e14;border-color:#fd7e14; background-color: #fff;}
+.altasico {color:#fd7e14}
+.altaspanel{border:1px solid #fd7e14!important}
+.altastitle{border-top:2px solid #fd7e14!important}
+
+.modificaciones {color:#D4AC0D;border-color:#D4AC0D;background-color:#D4AC0D}
+.modificaciones:hover {color:#D4AC0D;border-color:#D4AC0D; background-color: #fff;}
+.modificacionesico {color:#D4AC0D}
+.modificacionespanel{border:1px solid #D4AC0D!important}
+.modificacionestitle{border-top:2px solid #D4AC0D!important}
+.editarbutton{color:#D4AC0D;border:1px solid #D4AC0D!important;background-color: #fff;}
+.editarbutton:hover{background-color: #D4AC0D;color:#fff}
+
+.nuevoingreso{ color:#20c997;border-color:#20c997;background-color:#20c997 }
+.nuevoingreso:hover{ color:#20c997;border-color:#20c997; background-color: #fff; }
+.nuevoingresoico{ color:#20c997 }
+.nuevoingresopanel{border:1px solid #20c997!important}
+.nuevoingresotitle{border-top:2px solid #20c997!important}
+.altasbutton{color:#20c997;border:1px solid #20c997!important;background-color: #fff;}
+.altasbutton:hover{background-color: #20c997;color:#fff}
+
+.herramientas{color:#6C3483;border-color: #6C3483;background-color: #6C3483}
+.herramientas:hover{color:#6C3483;border-color:#6C3483; background-color: #fff;}
+.herramientasico{color:#6C3483}
+.herramientaspanel{border:1px solid #6C3483!important}
+.herramientastitle{border-top:2px solid #6C3483!important}
+
+.seguridad{background-color:#343a40;border-color:#343a40;background-color:#343a40}
+.seguridad:hover{background-color:#fff;border-color:#343a40;color:#343a40}
+.seguridadico{color:#343a40}
+.seguridadpanel{border:1px solid #343a40!important}
+.seguridadtitle{border-top:2px solid #343a40!important}
+
+.DeptoSubunidad{background-color:#343a40;border-color:#343a40;background-color:#343a40}
+.DeptoSubunidad:hover{background-color:#fff;border-color:#343a40;color:#343a40}
+.DeptoSubunidadico{color:#343a40}
+.DeptoSubunidadpanel{border:1px solid #343a40!important}
+.DeptoSubunidadtitle{border-top:2px solid #343a40!important}
+
+
+button:focus
+{
+    outline: inherit!important;
+    outline-color:#999!important
+}
+
+.bordercard{
+  border-radius: 3em;
+}
+
+.x_title {
+  border-bottom: none;
+  padding: 0%;
+  margin-bottom: 0%;
+}

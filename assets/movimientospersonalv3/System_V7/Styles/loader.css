@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+ body {
+	 margin: 0;
+}
+
+ .loader__wrapper {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 width: 100vw;
+	 height: 100vh;
+	 background: linear-gradient(to bottom, #111 0%, #222 100%);
+     opacity: 0.85;
+	 z-index: 185000;
+	 position:fixed;
+}
+ .icon__container {
+	 margin-bottom: 50px;
+	 font-size: 8em;
+	 color: #e0e9f5;
+	 transform-origin: center;
+	 animation: cloud--color-change 30s linear infinite;
+	 z-index: 1;
+}
+ .icon--computer {
+	 width: 130px;
+	 height: 125px;
+     margin-top:4%;
+     margin-left:3%;
+	 background-image: 'fa fa-desktop';
+	 background-repeat: no-repeat;
+	 background-position: center;
+	 background-size: contain;
+	 z-index: 1;
+}
+ .number__wrapper {
+	 display: flex;
+	 flex-direction: row;
+	 justify-content: space-around;
+	 align-items: center;
+	 width: 100px;
+	 height: 100px;
+	 position: absolute;
+}
+ .number {
+	 font-family: 'Space Mono';
+	 font-size: 1em;
+	 color: rgba(224,233,245,1);
+	 transform: translateY(70px);
+	 animation: rising-numbers 0.7s linear infinite;
+}
+ .number::before {
+	 content: '1';
+}
+ .number:nth-child(even)::before {
+	 content: '0';
+}
+ .number:nth-child(2) {
+	 animation-delay: 0.3s;
+}
+ .number:nth-child(3) {
+	 animation-delay: 0.1s;
+}
+ .number:nth-child(4) {
+	 animation-delay: 0.6s;
+}
+ .number:nth-child(5) {
+	 animation-delay: 0.4s;
+}
+.number:nth-child(6) {
+    animation-delay: 0.7s;
+}
+
+.numberfall__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.numberfall {
+    font-family: 'Space Mono';
+    font-size: 1em;
+    color: rgb(224,233,245,1);
+    transform: translateY(70px);
+    animation: raining-numbers 0.7s linear infinite;
+}
+.numberfall::before {
+    content: '1';
+}
+.numberfall:nth-child(even)::before {
+    content: '0';
+}
+.numberfall:nth-child(2) {
+    animation-delay: 0.3s;
+}
+.numberfall:nth-child(3) {
+    animation-delay: 0.1s;
+}
+.numberfall:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.numberfall:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.numberfall:nth-child(6) {
+    animation-delay: 0.7s;
+}
+
+.fa-cloud{ color:#e0e9f5}
+.fa-desktop{ color:#e0e9f5; margin-top: 1%;}
+
+ @keyframes rising-numbers {
+	 from {
+		 transform: translateY(70px);
+		 opacity: 0;
+	}
+	 to {
+		 transform: translateY(-70px);
+		 opacity: 1;
+	}
+}
+
+@keyframes raining-numbers {
+    from {
+        transform: translateY(-70px);
+        opacity: 0;
+   }
+    to {
+        transform: translateY(70px);
+        opacity: 1;
+   }
+}
+
+ @keyframes cloud--color-change {
+	 0% {
+		 color: white;
+	}
+	 50% {
+		 color: #e0e9f5;
+	}
+	 100% {
+		 color: white;
+	}
+}
+ 

@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="../../System/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom -->
+    <link href="../../System/css/custom.min.css" rel="stylesheet" />
+    <!-- HW -->
+    <link href="../../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <!-- Fluent Design -->
+    <link href="../../assets/css/fluent.css" rel="stylesheet" />     
+    <!-- JQuery -->
+    <script src="../../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="../../System/Scripts/bootstrap.bundle.js"></script>
+    <script src="../../System/js/custom.min.js"></script>
+    <script src="../../System/Scripts/JsEV.js"></script>
+    <script src="../../System/js/hwdbo-utilidades.js"></script>
+    <script src="../../assets/movimientospersonalv3/js/hwdbo-MenuMovimientosPersonal.js"></script>  
+    <style>
+        .centrado {
+            margin-top: 7%;
+            text-align: center;
+        }
+
+        .espacio {
+            margin-top: 6%;
+        }
+
+        .offset-1 {
+            margin-left: 4.333333%;
+        }
+        .enter{margin-top: 1%;}
+    </style>
+
+</head>
+<body>
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo" >
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo">Movimientos de personal V3</span>
+                </div>
+                <div class="col-1 class-inicio">
+                    <i class="fa fa-home" style="color:black"><span style="font-family: 'Trebuchet MS';font-size: 18px"> Inicio</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedor" style="border: none" class="fluentContenedorInterno">
+            <div id="divContenedorInterno" style="border:none;height:93%;overflow-x:hidden;overflow-y:auto" class="fluentContenedorInterno">
+                <div class="container" style="margin:1%">
+                    <div class="col-lg-3 offset-1">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">                                       
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="Nuevoingreso.html"><h2 style="font-size:1.6em;" class="consultamovsico"><img src="../../assets/images/iconos_web/nm-ico.png" style="height: 80px;width: 80px;" /> Nuevo movimiento</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">                                                                               
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">B&uacute;squeda con clave &uacute;nica de persona para nuevo movimiento.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="Nuevoingreso.html">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="#"><h2 style="font-size:1.6em;" class="consultamovsico"><img src="../../assets/images/iconos_web/bitacora-ico.png" style="height: 80px;width: 80px;"/> Bit&aacute;cora</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Bit&aacute;cora de movimientos realizados.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="#">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio" style="display:none">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="#"><h2 style="font-size:1.6em;" class="consultamovsico"><i class="fa fa-wrench fa-lg consultamovsico"></i> Herramientas</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Cambiar tema, idioma, entre otros.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="#">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-1">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="ConsultaMovimientos.html"><h2 style="font-size:1.6em;" class="consultamovsico"><img style="height: 80px;width: 80px;" src="../../assets/images/iconos_web/cm-ico.png" /> Consulta movimientos</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Consulte todos los movimientos realizados de sus empleados.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="ConsultaMovimientos.html">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio" style="display:none">
+                            <div class="x_panel bajaspanel" style="height: auto;">
+                                <div class="x_title bajastitle">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="MovimientosEmpleado.html?estatus=5"><h2 style="font-size:1.6em;" class="bajasico"><i class="fa fa-user-times fa-lg bajasico"></i> Bajas por autorizar</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down bajasico"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content" style="display: none;">
+                                    <div class=row>
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Consulte todos los movimientos realizados de sus empleados.</p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary bajas" href="MovimientosEmpleado.html?estatus=5">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio" style="display:none">
+                            <div class="x_panel seguridadpanel" style="height: auto;">
+                                <div class="x_title seguridadtitle">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="#"><h2 style="font-size:1.6em;" class="seguridadico"><i class="fa fa-lock fa-lg seguridadico"></i> Seguridad</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down seguridadico"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content" style="display: none;">
+                                    <div class=row>
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Asignaci&oacute;n de permisos para los usuarios.</p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary seguridad" href="#">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-1">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="x_panel consultamovspanel" style="height: auto;">
+                                <div class="x_title">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="MovimientosEmpleado.html?estatus=1"><h2 style="font-size:1.6em;" class="consultamovsico"><img style="height: 80px;width: 80px;" src="../../assets/images/iconos_web/ma-ico.png" /> Movimientos por afectar</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down consultamovsletra"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content consultamovstitle" style="display: none;">
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Movimientos pendientes por afectar/autorizar.</p></div>
+                                    </div>
+                                    <div class="row enter">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary consultamovs" href="MovimientosEmpleado.html?estatus=1">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 espacio" style="display:none">
+                            <div class="x_panel modificacionespanel" style="height: auto;">
+                                <div class="x_title modificacionestitle">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="MovimientosEmpleado.html?estatus=3"><h2 style="font-size:1.6em;" class="modificacionesico"><i class="fa fa-pencil-square fa-lg modificacionesico"></i> Cambios por autorizar</h2></a></td>
+                                            <td style="text-align:right"><a class="collapse-link"><i class="fa fa-chevron-down modificacionesico"></i></a></td>
+                                        </tr>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content" style="display: none;">
+                                    <div class=row>
+                                        <div class="col-md-12 col-sm-12"><p style="text-align:left">Modificaciones pendientes por autorizar.</p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12"><center><a class="btn btn-sm btn-primary modificaciones" href="MovimientosEmpleado.html?estatus=3">Ingresar</a></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <!--Div Contenido-->
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../System/Styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- JQuery -->
+    <script src="../System/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <!-- Jqxwidgets -->
+    <script src="../System/Scripts/jqwidgets/jqx-all.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="../System/Scripts/jqwidgets/jqxcore.js"></script>
+    <link href="../System/Scripts/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.light.css" rel="stylesheet" />
+    <link href="../System/Scripts/jqwidgets/styles/jqx.fresh.css" rel="stylesheet" />
+    <!-- Bootstrap -->  
+    <link href="../System/plugins/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../System/plugins/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <!-- HW -->
+    <link href="../System/Styles/procesos_harweb.css" rel="stylesheet" />
+    <link href="../System/Styles/loader.css" rel="stylesheet" />    
+    <!-- Confirm -->
+    <link href="../System/css/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="../System/js/jquery-confirm.min.js"></script>
+    <!-- Fluent Design -->
+    <link href="../assets/css/fluent.css" rel="stylesheet" /> 
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <!--Metro-->   
+    <script src="../System/plugins/Metro/js/metro-4.4.3.min.js"></script>  
+    <link href="../System/plugins/Metro/css/metro-4.4.3.min.css" rel="stylesheet" />
+    <!-- Excel -->
+    <script src="../System/js/xlsx.core.min.js"></script>
+    <script src="../System/js/xlsx.full.min.js"></script>
+
+    <style>
+        .obligado {color: red;}
+    </style>
+</head>
+
+<body>
+    <!-- Div Cargador -->
+    <div id="cargaPagina" class='loader__wrapper'>
+        <div class='icon__container'>
+            <i class='fa fa-cloud'></i>
+        </div>
+        <div class='numberfall__wrapper'>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+            <div class='numberfall'></div>
+        </div>
+        <div class='icon--computer'><i class="fa fa-desktop fa-5x"></i></div>
+    </div>    
+    <!-- //Div Cargador -->
+    <!--Div Contenido-->
+    <div id="divContenido">
+        <div id="divTitulo">
+            <div class="row">
+                <div class="col-11">
+                    <span id="spanTitulo" style="text-align: left;margin-top: 1%;">Consulta de nómina</span>
+                </div>
+                <div class="col-1 class-inicio" data-modulo="AdministracionNominas">
+                    <i class="fa fa-bars fa-lg" style="color:#4BAAD5;margin-top: 10%;"><span class="casita"> Menu</span></i>
+                </div>
+            </div>
+        </div>
+        <div id="divContenedorInterno" style="border: none;height:88%;overflow-y: auto;" class="fluentContenedorInterno2">                
+                <nav data-role="ribbonmenu">
+                    <ul class="tabs-holder">
+                        <li><a href="#section-1-1">Consulta</a></li>
+                    </ul>                
+                    <div class="content-holder">
+                        <div class="section" id="section-1-1">
+                            <div class="group">
+                                <button onclick="Consulta(1);" class="ribbon-button">
+                                    <span class="icon fa fa-list"></span>
+                                <span class="caption">Consulta general</span>
+                                </button>
+                                <button onclick="Consulta(2);" class="ribbon-button">
+                                    <span class="icon fa fa-list-alt"></span>
+                                <span class="caption">Consulta detallada</span>
+                                </button>
+                                <button onclick="Consulta(3);" class="ribbon-button">
+                                    <span class="icon fa fa-user"></span>
+                                <span class="caption">Consulta empleado</span>
+                                </button>
+                                <button onclick="Consulta(4);" class="ribbon-button">
+                                    <span class="icon fa fa-user-plus"></span>
+                                <span class="caption">Consulta empleado detallada</span>
+                                </button>                
+                                <span class="title">Consultas</span>
+                            </div>  
+                            
+                            <div class="group">
+                                <button style="width:80px" class="ribbon-button" onclick="DescargaExcel();">
+                                    <span class="icon fa fa-file-excel-o"></span>
+                                <span class="caption">Excel</span>
+                                </button>
+                                <span class="title">Exportación</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+                <div class="accordion" id="accordionEmpleado" style="margin-top:1.5%;border-radius:1.5em;">
+                    <div id="Empleado" class="accordion-item" style="border-radius:1.5em;display:none;">
+                        <h2 class="accordion-header" id="headingEmpleado">
+                          <button style="border-radius: 1.5em;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmpleado" aria-expanded="false" aria-controls="collapseEmpleado">
+                            Datos generales
+                          </button>
+                        </h2>
+                        <div id="collapseEmpleado" class="accordion-collapse collapse" aria-labelledby="headingEmpleado" data-bs-parent="#accordionEmpleado">
+                          <div class="accordion-body" style="height:230px;overflow-y: auto;">
+                            <div id="DivDatosEmp" style="font-size: small;"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="accordionPercepciones" style="border-radius:1.5em;">
+                    <div class="accordion-item" style="border-radius:1.5em;">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button style="border-radius: 1.5em;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Percepciones
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionPercepciones">
+                          <div class="accordion-body" style="height:230px;overflow-y: auto;">
+                            <div id="DivPer"></div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="accordion" id="accordionDeducciones" style="border-radius:1.5em;">
+                    <div class="accordion-item" style="border-radius:1.5em;">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button style="border-radius: 1.5em;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Deducciones
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionDeducciones">
+                          <div class="accordion-body" style="height:230px;overflow-y: auto;">
+                            <div id="DivDed"></div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="accordion" id="accordionAportaciones" style="border-radius:1.5em;">
+                    <div class="accordion-item" style="border-radius:1.5em;">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button style="border-radius: 1.5em;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Aportaciones
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionAportaciones">
+                          <div class="accordion-body" style="height:230px;overflow-y: auto;">
+                            <div id="DivAp"></div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="accordion" id="accordionTotales" style="border-radius:1.5em;">
+                    <div class="accordion-item" style="border-radius:1.5em;">
+                        <h2 class="accordion-header" id="headingTotales">
+                          <button style="border-radius: 1.5em;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTotales" aria-expanded="false" aria-controls="collapseTotales">
+                            Totales
+                          </button>
+                        </h2>
+                        <div id="collapseTotales" class="accordion-collapse collapse show" aria-labelledby="headingTotales" data-bs-parent="#accordionTotales">
+                          <div class="accordion-body" style="height:200px;overflow-y: auto;">
+                            <div id="DivTotales"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="DivEmpleado" style="display:none"></div>
+                <center><div id="BtnRegresar" style="display:none;margin-top:0.5%;"><button class="btn btn-dark" onclick="Regresar()">Regresar</button></div></center>
+        </div>
+    </div>
+    <!--Div Contenido-->
+    <!--Modal's-->
+    <div style="width:42%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasConsulta" aria-labelledby="offcanvasConsultaLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasConsultalLabel"><i class="fa fa-list consultamovsico"></i> <label id="lblTipoConsulta"></label></h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="grupo">Grupo empresarial</label>
+                        <div id="grupo" class="hwdbo-combo ini"></div>
+                    </div>
+                </div>  
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="razon">RFC del patrón</label>
+                        <div id="razon" class="hwdbo-combo cl"></div>
+                    </div>                     
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="registro">Registro patronal</label>
+                        <div id="registro" class="hwdbo-combo cl"></div>
+                    </div>
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="localidad">Localidad/Sucursal</label>
+                        <div id="localidad" class="hwdbo-combo cl"></div>
+                    </div>
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="esquema">Esquema pago</label>
+                        <div id="esquema" class="hwdbo-combo cl"></div>
+                    </div>                     
+                </div> 
+                <div class="row" style="margin-top:5%">
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="periodicidad">Periodicidad</label>
+                        <div id="periodicidad" class="hwdbo-combo ini"></div>
+                    </div>
+                    <div class="col-6">
+                        <span class="obligado">*</span>
+                        <label for="anio">Año</label>
+                        <div id="anio" class="hwdbo-combo ini"></div>
+                    </div>                      
+                </div>
+                <div class="row" style="margin-top:5%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="periodo">Periodo</label>
+                        <div id="periodo" class="hwdbo-combo cl"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:8%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoConsulta();"> Consultar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:42%" class="offcanvas offcanvas-start fluentContenedorInterno" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasConsultaEmpleado" aria-labelledby="offcanvasEmpleadoLabel">
+        <div class="offcanvas-header">
+        <h4 class="offcanvas-title consultamovsico" id="offcanvasConsultaEmpleadolLabel"><i class="fa fa-user consultamovsico"></i> <label id="lblTipoConsulta1"></label></h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">                    
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="grupo1">Grupo empresarial</label>
+                        <div id="grupo1" class="hwdbo-combo ini"></div>
+                    </div>
+                </div>   
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="periodicidad1">Periodicidad</label>
+                        <div id="periodicidad1" class="hwdbo-combo-simple ini"></div>
+                    </div>
+                </div> 
+                <div class="row" style="margin-top:10%">
+                    <div class="col">
+                        <span class="obligado">*</span>
+                        <label for="periodo1">Periodo</label>
+                        <div id="periodo1" class="hwdbo-combo-simple cl"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20%">
+                    <div class="col">
+                        <center><button class="btn btn-primary consultamovs" onclick="DoConsultaEmpleado();"> Consultar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.js"></script>
+<script src="../System/Scripts/jqwidgets/globalization/globalize.culture.es-MX.js"></script>
+<script src="../System/Scripts/jqwidgets/jqxespaniol.js"></script>
+<script src="../System/js/jqxgrid.filter.js"></script>
+<script src="../System/js/jqxgrid.sort.js"></script>
+<script src="../System/Scripts/JsEV.js"></script>
+<script src="../System/js/hwdbo-utilidades.js"></script>
+<script src="../System/js/hwdbo-ConsultaEmpleadoNomina.js?v=1.0.7"></script>
